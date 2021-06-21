@@ -145,7 +145,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "xhp_class_identifier"
+              "name": "xhp_identifier"
             },
             {
               "type": "SYMBOL",
@@ -234,7 +234,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "xhp_class_identifier"
+          "name": "xhp_identifier"
         }
       ]
     },
@@ -1958,7 +1958,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "xhp_class_identifier"
+              "name": "xhp_identifier"
             }
           ]
         },
@@ -5964,6 +5964,18 @@
           ]
         },
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "xhp"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "STRING",
           "value": "class"
         },
@@ -5979,7 +5991,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "xhp_class_identifier"
+                "name": "xhp_identifier"
               }
             ]
           }
@@ -7257,10 +7269,6 @@
       "type": "PATTERN",
       "value": "[a-zA-Z_][a-zA-Z0-9_]*([-:][a-zA-Z0-9_]+)*"
     },
-    "xhp_class_identifier": {
-      "type": "PATTERN",
-      "value": ":[a-zA-Z_][a-zA-Z0-9_]*([-:][a-zA-Z0-9_]+)*"
-    },
     "xhp_category_identifier": {
       "type": "PATTERN",
       "value": "%[a-zA-Z_][a-zA-Z0-9_]*([-:][a-zA-Z0-9_]+)*"
@@ -7745,7 +7753,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "xhp_class_identifier"
+          "name": "xhp_identifier"
         },
         {
           "type": "SYMBOL",

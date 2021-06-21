@@ -1,4 +1,4 @@
-class :a:m-b {
+xhp class a:m_b {
 }
 
-new :a:m-b:b-m();
+new a:m_b:b_m();

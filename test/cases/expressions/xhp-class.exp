@@ -1,8 +1,8 @@
 (script
   (class_declaration
-    name: (xhp_class_identifier)
+    name: (xhp_identifier)
     body: (member_declarations))
   (expression_statement
     (new_expression
-      (xhp_class_identifier)
+      (xhp_identifier)
       (arguments))))

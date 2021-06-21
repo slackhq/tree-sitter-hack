@@ -75,7 +75,7 @@ const rules = {
         $.qualified_identifier,
         $.variable,
         $.scope_identifier,
-        $.xhp_class_identifier,
+        $.xhp_identifier,
         $.pipe_variable,
       ),
       '::',
@@ -96,7 +96,7 @@ const rules = {
       $.scoped_identifier,
       $.scope_identifier,
       $.selection_expression,
-      $.xhp_class_identifier,
+      $.xhp_identifier,
     ),
 
   _statement: $ =>
@@ -425,7 +425,7 @@ const rules = {
         $._primitive_type,
         $.qualified_identifier,
         $._collection_type,
-        $.xhp_class_identifier,
+        $.xhp_identifier,
       ),
       opt($.type_arguments),
     ),
@@ -798,8 +798,9 @@ const rules = {
       opt($.attribute_modifier),
       opt($._class_modifier),
       opt($._class_modifier),
+      opt('xhp'),
       'class',
-      field('name', choice($.identifier, $.xhp_class_identifier)),
+      field('name', choice($.identifier, $.xhp_identifier)),
       opt($.type_parameters),
       opt($.extends_clause),
       opt($.implements_clause),
@@ -993,8 +994,6 @@ const rules = {
 
   xhp_identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*([-:][a-zA-Z0-9_]+)*/,
 
-  xhp_class_identifier: $ => /:[a-zA-Z_][a-zA-Z0-9_]*([-:][a-zA-Z0-9_]+)*/,
-
   xhp_category_identifier: $ => /%[a-zA-Z_][a-zA-Z0-9_]*([-:][a-zA-Z0-9_]+)*/,
 
   xhp_expression: $ =>
@@ -1057,7 +1056,7 @@ const rules = {
   _xhp_attribute_expression: $ =>
     choice(
       $.xhp_identifier,
-      $.xhp_class_identifier,
+      $.xhp_identifier,
       $.xhp_category_identifier,
       alias($._xhp_binary_expression, $.binary_expression),
       alias($._xhp_postfix_unary_expression, $.postfix_unary_expression),
