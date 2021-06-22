@@ -145,7 +145,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "xhp_class_identifier"
+              "name": "xhp_identifier"
             },
             {
               "type": "SYMBOL",
@@ -231,6 +231,10 @@
         {
           "type": "SYMBOL",
           "name": "selection_expression"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "xhp_identifier"
         },
         {
           "type": "SYMBOL",
@@ -1955,6 +1959,10 @@
             {
               "type": "SYMBOL",
               "name": "_collection_type"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "xhp_identifier"
             },
             {
               "type": "SYMBOL",
@@ -5964,6 +5972,18 @@
           ]
         },
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "xhp"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "STRING",
           "value": "class"
         },
@@ -5976,6 +5996,10 @@
               {
                 "type": "SYMBOL",
                 "name": "identifier"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "xhp_identifier"
               },
               {
                 "type": "SYMBOL",

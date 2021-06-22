@@ -170,6 +170,10 @@
         "named": true
       },
       {
+        "type": "xhp_identifier",
+        "named": true
+      },
+      {
         "type": "yield_expression",
         "named": true
       }
@@ -948,6 +952,10 @@
           {
             "type": "xhp_class_identifier",
             "named": true
+          },
+          {
+            "type": "xhp_identifier",
+            "named": true
           }
         ]
       }
@@ -1478,6 +1486,10 @@
           {
             "type": "xhp_class_identifier",
             "named": true
+          },
+          {
+            "type": "xhp_identifier",
+            "named": true
           }
         ]
       },
@@ -1527,6 +1539,10 @@
           },
           {
             "type": "xhp_class_identifier",
+            "named": true
+          },
+          {
+            "type": "xhp_identifier",
             "named": true
           }
         ]
@@ -2106,6 +2122,10 @@
         {
           "type": "xhp_class_identifier",
           "named": true
+        },
+        {
+          "type": "xhp_identifier",
+          "named": true
         }
       ]
     }
@@ -2207,10 +2227,6 @@
         {
           "type": "xhp_category_identifier",
           "named": true
-        },
-        {
-          "type": "xhp_identifier",
-          "named": true
         }
       ]
     }
@@ -2229,10 +2245,6 @@
         },
         {
           "type": "xhp_category_identifier",
-          "named": true
-        },
-        {
-          "type": "xhp_identifier",
           "named": true
         }
       ]
@@ -2511,7 +2523,7 @@
           "named": true
         },
         {
-          "type": "xhp_class_identifier",
+          "type": "xhp_identifier",
           "named": true
         }
       ]
@@ -2597,6 +2609,10 @@
         },
         {
           "type": "xhp_class_identifier",
+          "named": true
+        },
+        {
+          "type": "xhp_identifier",
           "named": true
         }
       ]
@@ -3212,6 +3228,10 @@
         {
           "type": "xhp_class_identifier",
           "named": true
+        },
+        {
+          "type": "xhp_identifier",
+          "named": true
         }
       ]
     }
@@ -3266,6 +3286,10 @@
         },
         {
           "type": "xhp_class_identifier",
+          "named": true
+        },
+        {
+          "type": "xhp_identifier",
           "named": true
         }
       ]
@@ -4076,6 +4100,10 @@
     "named": false
   },
   {
+    "type": "comment",
+    "named": true
+  },
+  {
     "type": "concurrent",
     "named": false
   },
@@ -4149,11 +4177,11 @@
   },
   {
     "type": "float",
-    "named": true
+    "named": false
   },
   {
     "type": "float",
-    "named": false
+    "named": true
   },
   {
     "type": "for",
@@ -4393,6 +4421,10 @@
   },
   {
     "type": "while",
+    "named": false
+  },
+  {
+    "type": "xhp",
     "named": false
   },
   {
