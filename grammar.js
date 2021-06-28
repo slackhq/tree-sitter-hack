@@ -996,6 +996,8 @@ const rules = {
 
   xhp_identifier: $ => /[a-zA-Z_][a-zA-Z0-9_]*([-:][a-zA-Z0-9_]+)*/,
 
+  xhp_class_identifier: $ => /:[a-zA-Z_][a-zA-Z0-9_]*([-:][a-zA-Z0-9_]+)*/,
+
   xhp_category_identifier: $ => /%[a-zA-Z_][a-zA-Z0-9_]*([-:][a-zA-Z0-9_]+)*/,
 
   xhp_expression: $ =>
@@ -1058,7 +1060,7 @@ const rules = {
   _xhp_attribute_expression: $ =>
     choice(
       $.xhp_identifier,
-      $.xhp_identifier,
+      $.xhp_class_identifier,
       $.xhp_category_identifier,
       alias($._xhp_binary_expression, $.binary_expression),
       alias($._xhp_postfix_unary_expression, $.postfix_unary_expression),
