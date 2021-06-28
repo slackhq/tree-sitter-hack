@@ -149,6 +149,10 @@
             },
             {
               "type": "SYMBOL",
+              "name": "xhp_class_identifier"
+            },
+            {
+              "type": "SYMBOL",
               "name": "pipe_variable"
             }
           ]

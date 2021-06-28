@@ -2523,6 +2523,10 @@
           "named": true
         },
         {
+          "type": "xhp_class_identifier",
+          "named": true
+        },
+        {
           "type": "xhp_identifier",
           "named": true
         }
