@@ -1,7 +1,6 @@
 (script
   (class_declaration
-    (xhp_modifier)
-    name: (identifier)
+    name: (xhp_class_identifier)
     body: (member_declarations
       (xhp_attribute_declaration
         (xhp_class_attribute

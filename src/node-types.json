@@ -991,6 +991,10 @@
         {
           "type": "where_clause",
           "named": true
+        },
+        {
+          "type": "xhp_modifier",
+          "named": true
         }
       ]
     }
@@ -4181,11 +4185,11 @@
   },
   {
     "type": "float",
-    "named": false
+    "named": true
   },
   {
     "type": "float",
-    "named": true
+    "named": false
   },
   {
     "type": "for",
@@ -4428,10 +4432,6 @@
     "named": false
   },
   {
-    "type": "xhp",
-    "named": false
-  },
-  {
     "type": "xhp_category_identifier",
     "named": true
   },
@@ -4445,6 +4445,10 @@
   },
   {
     "type": "xhp_identifier",
+    "named": true
+  },
+  {
+    "type": "xhp_modifier",
     "named": true
   },
   {
