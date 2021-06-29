@@ -801,7 +801,7 @@ const rules = {
       opt($.attribute_modifier),
       opt($._class_modifier),
       opt($._class_modifier),
-      opt('xhp'),
+      opt($.xhp_modifier),
       'class',
       field('name', choice($.identifier, $.xhp_identifier, $.xhp_class_identifier)),
       opt($.type_parameters),
@@ -977,6 +977,8 @@ const rules = {
   final_modifier: $ => 'final',
 
   abstract_modifier: $ => 'abstract',
+
+  xhp_modifier: $ => 'xhp',
 
   static_modifier: $ => 'static',
 
