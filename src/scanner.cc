@@ -2,6 +2,7 @@
 
 #include <cwctype>
 #include <string>
+#include <regex>
 
 #define debug 0
 #define print(...) \
@@ -234,7 +235,6 @@ struct Scanner {
           } else {
             stop();
             next();
-
             if (peek() == '$') {
               return true;
             }
@@ -248,7 +248,14 @@ struct Scanner {
             next();
           } else {
             stop();
-            return true;
+            next();
+            std::regex variable("[a-zA-Z_\x80-\xff]");
+            string next_char = str(peek());
+
+            // If the string following $ is a variable identifier
+            if (std::regex_match(next_char, variable)) {
+              return true;
+            }
           }
           break;
         }
