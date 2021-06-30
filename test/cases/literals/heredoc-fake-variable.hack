@@ -1,3 +1,0 @@
-<<<EOT
-	$()abc$()$realvar$()
-EOT;
