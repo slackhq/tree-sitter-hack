@@ -1020,7 +1020,9 @@ const rules = {
       ),
     ),
 
-  xhp_string: $ => /[^<]+/,
+  xhp_comment: $ => token(seq('<!--', /(-?>)?([^>]|[^-]>|[^-]->)*/, '-->')),
+
+  xhp_string: $ => /[^<{]+/,
 
   xhp_open: $ => seq('<', $.xhp_identifier, rep($.xhp_attribute), '>'),
 
@@ -1136,7 +1138,7 @@ module.exports = grammar({
 
   extras: $ => [/\s/, $.comment],
 
-  externals: $ => [$._heredoc_start, $._heredoc_body, $._heredoc_end, $.xhp_comment],
+  externals: $ => [$._heredoc_start, $._heredoc_body, $._heredoc_end],
 
   supertypes: $ => [
     $._statement,

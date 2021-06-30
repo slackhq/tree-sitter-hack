@@ -1,6 +1,6 @@
 return <frag>
-    <!--  comment
+    <!--  co--mm->e>nt
     one  -->
-    {$this->test()}
+    Te{$this}st
     <!--  comment two  -->
 </frag>;

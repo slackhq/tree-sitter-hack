@@ -6,6 +6,9 @@
       (xhp_string)
       (xhp_comment)
       (xhp_string)
+      (xhp_braced_expression
+        (variable))
+      (xhp_string)
       (xhp_comment)
       (xhp_string)
       (xhp_close

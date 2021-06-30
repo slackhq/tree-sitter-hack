@@ -41,10 +41,9 @@ enum TokenType {
   HEREDOC_START,
   HEREDOC_BODY,
   HEREDOC_END,
-  XHP_COMMENT,
 };
 
-const char *TokenTypes[] = {"HEREDOC_START", "HEREDOC_BODY", "HEREDOC_END", "XHP_COMMENT"};
+const char *TokenTypes[] = {"HEREDOC_START", "HEREDOC_BODY", "HEREDOC_END"};
 
 static const char *str(int32_t chr) {
   switch (chr) {
@@ -126,16 +125,6 @@ struct Scanner {
         set(HEREDOC_START);
         return true;
       }
-    }
-
-    if (expected[XHP_COMMENT] && peek() == '<') {
-        stop();
-        next();
-
-        if (peek() == '!') {
-          next();
-          return scan_comment(lexer);
-        }
     }
 
     return false;
@@ -280,33 +269,6 @@ struct Scanner {
         }
       }
     }
-  }
-
-  bool scan_comment(TSLexer *lexer) {
-    if (peek() != '-') return false;
-    next();
-    if (peek() != '-') return false;
-    next();
-
-    unsigned dashes = 0;
-    while (peek()) {
-      switch (peek()) {
-        case '-':
-          ++dashes;
-          break;
-        case '>':
-          if (dashes >= 2) {
-            set(XHP_COMMENT);
-            next();
-            stop();
-            return true;
-          }
-        default:
-          dashes = 0;
-      }
-      next();
-    }
-    return false;
   }
 
   string delimiter;
