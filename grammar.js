@@ -57,6 +57,9 @@ const rules = {
       'newtype',
       'shape',
       'tupe',
+      'clone',
+      'new',
+      'print',
       $._primitive_type,
       $._collection_type,
     ),
@@ -722,7 +725,7 @@ const rules = {
       seq(
         $._variablish,
         field('selection_operator', choice('?->', '->')),
-        $._variablish,
+        choice($._variablish, $.embedded_brace_expression, alias($._keyword, $.identifier)),
       ),
     ),
 
@@ -1158,6 +1161,7 @@ module.exports = grammar({
     $._primitive_type,
     $._collection_type,
     $._xhp_attribute_expression,
+    $._keyword,
   ],
 
   conflicts: $ => [

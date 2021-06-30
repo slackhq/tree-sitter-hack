@@ -70,6 +70,18 @@
           "value": "tupe"
         },
         {
+          "type": "STRING",
+          "value": "clone"
+        },
+        {
+          "type": "STRING",
+          "value": "new"
+        },
+        {
+          "type": "STRING",
+          "value": "print"
+        },
+        {
           "type": "SYMBOL",
           "name": "_primitive_type"
         },
@@ -5396,8 +5408,26 @@
             }
           },
           {
-            "type": "SYMBOL",
-            "name": "_variablish"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_variablish"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "embedded_brace_expression"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_keyword"
+                },
+                "named": true,
+                "value": "identifier"
+              }
+            ]
           }
         ]
       }
@@ -8176,7 +8206,8 @@
     "_type",
     "_primitive_type",
     "_collection_type",
-    "_xhp_attribute_expression"
+    "_xhp_attribute_expression",
+    "_keyword"
   ],
   "supertypes": [
     "_statement",
