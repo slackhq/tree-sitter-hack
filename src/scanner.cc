@@ -235,6 +235,7 @@ struct Scanner {
           } else {
             stop();
             next();
+
             if (peek() == '$') {
               return true;
             }
@@ -249,11 +250,8 @@ struct Scanner {
           } else {
             stop();
             next();
-            std::regex variable("[a-zA-Z_\x80-\xff]");
-            string next_char = str(peek());
 
-            // If the string following $ is a variable identifier
-            if (std::regex_match(next_char, variable)) {
+            if (is_identifier_start_char(peek())) {
               return true;
             }
           }
@@ -276,6 +274,14 @@ struct Scanner {
         }
       }
     }
+  }
+
+  
+  // This function returns true if c is a valid starting character of a name/identifier
+  bool is_identifier_start_char(char c){
+    return (c == '_')
+        || ('a' <= c && c <= 'z')
+        || ('A' <= c && c <= 'Z');
   }
 
   string delimiter;
