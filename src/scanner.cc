@@ -2,7 +2,6 @@
 
 #include <cwctype>
 #include <string>
-#include <regex>
 
 #define debug 0
 #define print(...) \
