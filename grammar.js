@@ -177,6 +177,8 @@ const rules = {
       ),
     ),
 
+  braced_expression: $ => seq('{', $._expression, '}'),
+
   _expression: $ =>
     choice(
       $.heredoc,
@@ -725,7 +727,7 @@ const rules = {
       seq(
         $._variablish,
         field('selection_operator', choice('?->', '->')),
-        choice($._variablish, $.embedded_brace_expression, alias($._keyword, $.identifier)),
+        choice($._variablish, $.braced_expression, alias($._keyword, $.identifier)),
       ),
     ),
 
@@ -1015,7 +1017,7 @@ const rules = {
           choice(
             $.xhp_string,
             $.xhp_comment,
-            $.xhp_braced_expression,
+            $.braced_expression,
             $.xhp_expression,
           ),
         ),
@@ -1035,11 +1037,9 @@ const rules = {
 
   xhp_attribute: $ =>
     choice(
-      seq($.xhp_identifier, '=', choice($.string, $.xhp_braced_expression)),
-      choice($.xhp_braced_expression, $.xhp_spread_expression),
+      seq($.xhp_identifier, '=', choice($.string, $.braced_expression)),
+      choice($.braced_expression, $.xhp_spread_expression),
     ),
-
-  xhp_braced_expression: $ => seq('{', $._expression, '}'),
 
   xhp_spread_expression: $ => seq('{', '...', $._expression, '}'),
 
