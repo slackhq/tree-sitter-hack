@@ -275,12 +275,9 @@ struct Scanner {
     }
   }
 
-  
   // This function returns true if c is a valid starting character of a name/identifier
-  bool is_identifier_start_char(char c){
-    return (c == '_')
-        || ('a' <= c && c <= 'z')
-        || ('A' <= c && c <= 'Z');
+  bool is_identifier_start_char(int32_t c) {
+    return (c == '_') || ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z') || (128 <= c && c <= 255);
   }
 
   string delimiter;
