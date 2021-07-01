@@ -1,4 +1,5 @@
 (script
+  (comment)
   (expression_statement
     (heredoc)
       variable )))
