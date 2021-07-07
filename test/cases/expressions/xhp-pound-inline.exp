@@ -1,8 +1,8 @@
-(script [0, 0] - [1, 0]
-  (return_statement [0, 0] - [0, 24]
-    (xhp_expression [0, 7] - [0, 23]
-      (xhp_open [0, 7] - [0, 13]
-        (xhp_identifier [0, 8] - [0, 12]))
-      (xhp_string [0, 13] - [0, 16])
-      (xhp_close [0, 16] - [0, 23]
-        (xhp_identifier [0, 18] - [0, 22])))))
+(script
+  (return_statement
+    (xhp_expression
+      (xhp_open
+        (xhp_identifier))
+      (xhp_string)
+      (xhp_close
+        (xhp_identifier)))))
