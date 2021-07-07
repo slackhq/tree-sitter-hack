@@ -2106,15 +2106,7 @@
         },
         {
           "type": "STRING",
-          "value": "("
-        },
-        {
-          "type": "STRING",
-          "value": "function"
-        },
-        {
-          "type": "STRING",
-          "value": "("
+          "value": "(function("
         },
         {
           "type": "CHOICE",
@@ -2211,11 +2203,7 @@
         },
         {
           "type": "STRING",
-          "value": ")"
-        },
-        {
-          "type": "STRING",
-          "value": ":"
+          "value": "):"
         },
         {
           "type": "FIELD",
