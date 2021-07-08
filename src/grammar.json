@@ -157,7 +157,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_xhp_identifiers"
+              "name": "_xhp_identifier"
             },
             {
               "type": "SYMBOL",
@@ -246,7 +246,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_xhp_identifiers"
+          "name": "_xhp_identifier"
         }
       ]
     },
@@ -1987,7 +1987,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_xhp_identifiers"
+              "name": "_xhp_identifier"
             }
           ]
         },
@@ -6047,7 +6047,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "_xhp_identifiers"
+                "name": "_xhp_identifier"
               }
             ]
           }
@@ -7333,7 +7333,7 @@
       "type": "PATTERN",
       "value": ":[a-zA-Z_][a-zA-Z0-9_]*([-:][a-zA-Z0-9_]+)*"
     },
-    "_xhp_identifiers": {
+    "_xhp_identifier": {
       "type": "CHOICE",
       "members": [
         {
@@ -7436,7 +7436,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_xhp_identifiers"
+          "name": "_xhp_identifier"
         },
         {
           "type": "REPEAT",
@@ -7460,7 +7460,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_xhp_identifiers"
+          "name": "_xhp_identifier"
         },
         {
           "type": "REPEAT",
@@ -7484,7 +7484,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_xhp_identifiers"
+          "name": "_xhp_identifier"
         },
         {
           "type": "STRING",
@@ -8220,7 +8220,8 @@
     "_primitive_type",
     "_collection_type",
     "_xhp_attribute_expression",
-    "_keyword"
+    "_keyword",
+    "_xhp_identifier"
   ],
   "supertypes": [
     "_statement",

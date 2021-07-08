@@ -78,7 +78,7 @@ const rules = {
         $.qualified_identifier,
         $.variable,
         $.scope_identifier,
-        $._xhp_identifiers,
+        $._xhp_identifier,
         $.pipe_variable,
       ),
       '::',
@@ -99,7 +99,7 @@ const rules = {
       $.scoped_identifier,
       $.scope_identifier,
       $.selection_expression,
-      $._xhp_identifiers,
+      $._xhp_identifier,
     ),
 
   _statement: $ =>
@@ -430,7 +430,7 @@ const rules = {
         $._primitive_type,
         $.qualified_identifier,
         $._collection_type,
-        $._xhp_identifiers,
+        $._xhp_identifier,
       ),
       opt($.type_arguments),
     ),
@@ -805,7 +805,7 @@ const rules = {
       opt($._class_modifier),
       opt($.xhp_modifier),
       'class',
-      field('name', choice($.identifier, $._xhp_identifiers)),
+      field('name', choice($.identifier, $._xhp_identifier)),
       opt($.type_parameters),
       opt($.extends_clause),
       opt($.implements_clause),
@@ -1003,7 +1003,7 @@ const rules = {
 
   xhp_class_identifier: $ => /:[a-zA-Z_][a-zA-Z0-9_]*([-:][a-zA-Z0-9_]+)*/,
 
-  _xhp_identifiers: $ => choice($.xhp_identifier, $.xhp_class_identifier),
+  _xhp_identifier: $ => choice($.xhp_identifier, $.xhp_class_identifier),
 
   xhp_category_identifier: $ => /%[a-zA-Z_][a-zA-Z0-9_]*([-:][a-zA-Z0-9_]+)*/,
 
@@ -1028,11 +1028,11 @@ const rules = {
 
   xhp_string: $ => token(prec(1, /[^<{]+/)),
 
-  xhp_open: $ => seq('<', $._xhp_identifiers, rep($.xhp_attribute), '>'),
+  xhp_open: $ => seq('<', $._xhp_identifier, rep($.xhp_attribute), '>'),
 
-  xhp_open_close: $ => seq('<', $._xhp_identifiers, rep($.xhp_attribute), '/>'),
+  xhp_open_close: $ => seq('<', $._xhp_identifier, rep($.xhp_attribute), '/>'),
 
-  xhp_close: $ => seq('</', $._xhp_identifiers, '>'),
+  xhp_close: $ => seq('</', $._xhp_identifier, '>'),
 
   xhp_attribute: $ =>
     choice(
@@ -1161,6 +1161,7 @@ module.exports = grammar({
     $._collection_type,
     $._xhp_attribute_expression,
     $._keyword,
+    $._xhp_identifier,
   ],
 
   conflicts: $ => [
