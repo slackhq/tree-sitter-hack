@@ -448,9 +448,9 @@ const rules = {
   function_type_specifier: $ =>
     seq(
       rep($._type_modifier),
-      '(function(',
+      /\(\s*function\s*\(/,
       com.opt(opt($.inout_modifier), $._type, opt($.variadic_modifier), ','),
-      '):',
+      /\)\s*:/,
       field('return_type', $._type),
       ')',
     ),

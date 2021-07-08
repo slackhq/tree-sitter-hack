@@ -2105,8 +2105,8 @@
           }
         },
         {
-          "type": "STRING",
-          "value": "(function("
+          "type": "PATTERN",
+          "value": "\\(\\s*function\\s*\\("
         },
         {
           "type": "CHOICE",
@@ -2202,8 +2202,8 @@
           ]
         },
         {
-          "type": "STRING",
-          "value": "):"
+          "type": "PATTERN",
+          "value": "\\)\\s*:"
         },
         {
           "type": "FIELD",
