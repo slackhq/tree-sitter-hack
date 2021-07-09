@@ -2105,8 +2105,12 @@
           }
         },
         {
+          "type": "STRING",
+          "value": "("
+        },
+        {
           "type": "PATTERN",
-          "value": "\\(\\s*function\\s*\\("
+          "value": "function\\s*\\("
         },
         {
           "type": "CHOICE",
@@ -2202,8 +2206,12 @@
           ]
         },
         {
-          "type": "PATTERN",
-          "value": "\\)\\s*:"
+          "type": "STRING",
+          "value": ")"
+        },
+        {
+          "type": "STRING",
+          "value": ":"
         },
         {
           "type": "FIELD",
