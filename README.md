@@ -1,6 +1,6 @@
 # tree-sitter-hack
 
-[![build](https://github.com/antoniodejesusochoasolano/tree-sitter-hack/actions/workflows/ci.yml/badge.svg)
+![build](https://github.com/antoniodejesusochoasolano/tree-sitter-hack/actions/workflows/ci.yml/badge.svg)
 
 [Hack](https://hacklang.org/) grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter).
 
