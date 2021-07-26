@@ -88,3 +88,4 @@ There's no published official Hacklang language spec so we have to make do.
 - Deprecated [Hack Language Specification](https://github.com/facebookarchive/hack-langspec)
 - [PHP Language Specification](https://github.com/php/php-langspec) -
   Does not apply 100% to Hacklang, but still a good reference.
+- Bug icon in diagram made by Freepik
