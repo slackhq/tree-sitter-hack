@@ -335,7 +335,7 @@ const rules = {
     seq(
       'try',
       field('body', $.compound_statement),
-      repeat($.catch_clause),
+      rep($.catch_clause),
       choice($.catch_clause, $.finally_clause),
     ),
 
