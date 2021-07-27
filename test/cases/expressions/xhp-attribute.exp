@@ -14,6 +14,22 @@
                   (string)))))))))
   (expression_statement
     (xhp_expression
+      (xhp_open
+        (xhp_identifier)
+        (xhp_attribute
+          (xhp_identifier)
+          (braced_expression
+            (call_expression
+              function: (qualified_identifier
+                (identifier))
+              (arguments
+                (argument
+                  (string)))))))
+      (xhp_string)
+      (xhp_close
+        (xhp_identifier))))
+  (expression_statement
+    (xhp_expression
       (xhp_open_close
         (xhp_identifier)
         (xhp_attribute

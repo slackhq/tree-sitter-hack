@@ -1,5 +1,7 @@
 <frag info={get_str('info')} />;
 
+<frag info={get_str('info')}> </frag>;
+
 <test:attribute_types
         mystring="foo"
         mybool={true}
