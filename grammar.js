@@ -1,6 +1,6 @@
 'use strict';
 
-// Precence based on order. Indirection overkill but I couldn't help myself.
+// Precedence based on order. Indirection overkill but I couldn't help myself.
 // https://docs.hhvm.com/hack/expressions-and-operators/operator-precedence
 [
   [prec.left, 'qualified'],
@@ -726,7 +726,11 @@ const rules = {
       seq(
         choice($._variablish, $.as_expression),
         field('selection_operator', choice('?->', '->')),
-        choice($._variablish, $.braced_expression, alias($._keyword, $.identifier)),
+        choice(
+          $._variablish,
+          $.braced_expression,
+          alias($._keyword, $.identifier),
+        ),
       ),
     ),
 
