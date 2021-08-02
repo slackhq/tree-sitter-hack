@@ -74,6 +74,7 @@ enum TokenType {
   HEREDOC_BODY,
   HEREDOC_END_NEWLINE,
   HEREDOC_END,
+  STRING_BODY,
 };
 
 const char *TokenTypes[] = {
@@ -82,6 +83,7 @@ const char *TokenTypes[] = {
     "HEREDOC_BODY",           //
     "HEREDOC_END_NEWLINE",    //
     "HEREDOC_END",            //
+    "STRING_BODY",            //
 };
 
 static const char *str(int32_t chr) {
@@ -142,20 +144,67 @@ struct Scanner {
     if (expected[HEREDOC_BODY]) print("%s ", TokenTypes[HEREDOC_BODY]);
     if (expected[HEREDOC_END_NEWLINE]) print("%s ", TokenTypes[HEREDOC_END_NEWLINE]);
     if (expected[HEREDOC_END]) print("%s ", TokenTypes[HEREDOC_END]);
+    if (expected[STRING_BODY]) print("%s ", TokenTypes[STRING_BODY]);
     print("\n");
 
     if (expected[HEREDOC_BODY] || expected[HEREDOC_END]) {
-      return scan_body(lexer);
+      return scan_heredoc_body(lexer);
     }
 
     if (expected[HEREDOC_START]) {
-      return scan_start(lexer);
+      return scan_heredoc_start(lexer);
+    }
+
+    if (expected[STRING_BODY]) {
+      return scan_string_body(lexer);
     }
 
     return false;
   }
 
-  bool scan_start(TSLexer *lexer) {
+  bool scan_string_body(TSLexer *lexer) {
+    set(STRING_BODY);
+
+    bool did_advance = 0;
+
+    for (;;) {
+      if (peek() == '\0') {
+        return false;
+      }
+
+      if (peek() == '\\') {
+        next();
+        next();
+        did_advance = true;
+        continue;
+      }
+
+      if ((peek() == '{' || peek() == '$')) {
+        stop();
+        if (peek() == '{') next();
+        if (peek() == '$') {
+          next();
+
+          if (is_identifier_start_char(peek())) {
+            ret("scan_string_body", did_advance);
+          }
+        }
+
+        did_advance = true;
+        continue;
+      }
+
+      if (peek() == '"') {
+        stop();
+        ret("scan_string_body", did_advance);
+      }
+
+      next();
+      did_advance = true;
+    }
+  }
+
+  bool scan_heredoc_start(TSLexer *lexer) {
     print("scan_start() <-\n");
 
     while (iswspace(peek())) skip();
@@ -221,7 +270,7 @@ struct Scanner {
     ret("scan_delimiter", true);
   }
 
-  bool scan_body(TSLexer *lexer) {
+  bool scan_heredoc_body(TSLexer *lexer) {
     print("scan_body() <-\n");
 
     bool did_advance = false;

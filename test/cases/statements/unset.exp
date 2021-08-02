@@ -3,7 +3,8 @@
   (unset_statement
     (subscript_expression
       (variable)
-      (string))
+      (string
+        (string_body)))
     (subscript_expression
       (variable)
       (integer))))

@@ -21,7 +21,8 @@
       (qualified_identifier
         (identifier))
       (element_initializer
-        (string)
+        (string
+          (string_body))
         (integer))))
   (expression_statement
     (collection
@@ -31,5 +32,7 @@
     (collection
       (qualified_identifier
         (identifier))
-      (string)
-      (string))))
+      (string
+        (string_body))
+      (string
+        (string_body)))))

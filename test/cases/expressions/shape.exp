@@ -2,5 +2,6 @@
   (expression_statement
     (shape
       (field_initializer
-        (string)
+        (string
+          (string_body))
         (integer)))))

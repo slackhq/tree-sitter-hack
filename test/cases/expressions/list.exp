@@ -4,32 +4,44 @@
       left: (list_expression
         (variable))
       right: (tuple
-        (string))))
+        (string
+          (string_body)))))
   (expression_statement
     (binary_expression
       left: (list_expression
         (variable))
       right: (tuple
-        (string)
-        (string))))
-  (expression_statement
-    (binary_expression
-      left: (list_expression
-        (variable)
-        (variable))
-      right: (tuple
-        (string)
-        (string)
-        (string))))
+        (string
+          (string_body))
+        (string
+          (string_body)))))
   (expression_statement
     (binary_expression
       left: (list_expression
         (variable)
         (variable))
       right: (tuple
-        (string)
-        (string)
-        (string)
-        (string)
-        (string)
-        (string)))))
+        (string
+          (string_body))
+        (string
+          (string_body))
+        (string
+          (string_body)))))
+  (expression_statement
+    (binary_expression
+      left: (list_expression
+        (variable)
+        (variable))
+      right: (tuple
+        (string
+          (string_body))
+        (string
+          (string_body))
+        (string
+          (string_body))
+        (string
+          (string_body))
+        (string
+          (string_body))
+        (string
+          (string_body))))))

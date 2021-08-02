@@ -1,0 +1,75 @@
+(script
+  (expression_statement
+    (heredoc
+      (embedded_brace_expression
+        (selection_expression
+          (variable)
+          (subscript_expression
+            (selection_expression
+              (call_expression
+                function: (qualified_identifier
+                  (identifier))
+                (arguments
+                  (argument
+                    (string
+                      (string_body)
+                      (embedded_brace_expression
+                        (selection_expression
+                          (variable)
+                          (call_expression
+                            function: (qualified_identifier
+                              (identifier))
+                            (arguments
+                              (argument
+                                (string
+                                  (string_body)))))))))))
+              (qualified_identifier
+                (identifier)))
+            (string
+              (embedded_brace_expression
+                (selection_expression
+                  (variable)
+                  (call_expression
+                    function: (qualified_identifier
+                      (identifier))
+                    (arguments
+                      (argument
+                        (string
+                          (string_body)))))))
+              (string_body)))))
+      (embedded_brace_expression
+        (selection_expression
+          (variable)
+          (call_expression
+            function: (selection_expression
+              (subscript_expression
+                (qualified_identifier
+                  (identifier))
+                (string
+                  (embedded_brace_expression
+                    (selection_expression
+                      (variable)
+                      (call_expression
+                        function: (qualified_identifier
+                          (identifier))
+                        (arguments
+                          (argument
+                            (string
+                              (string_body)))))))
+                  (string_body)))
+              (qualified_identifier
+                (identifier)))
+            (arguments
+              (argument
+                (string
+                  (string_body)
+                  (embedded_brace_expression
+                    (selection_expression
+                      (variable)
+                      (call_expression
+                        function: (qualified_identifier
+                          (identifier))
+                        (arguments
+                          (argument
+                            (string
+                              (string_body))))))))))))))))

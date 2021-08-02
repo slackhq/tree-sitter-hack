@@ -5,8 +5,10 @@
       (xhp_attribute_declaration
         (xhp_class_attribute
           type: (xhp_enum_type
-            (string)
-            (string)
+            (string
+              (string_body))
+            (string
+              (string_body))
             (integer))
           name: (xhp_identifier)
           default: (integer))))))

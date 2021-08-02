@@ -23,5 +23,7 @@
     (enumerator
       (identifier)
       (binary_expression
-        left: (string)
-        right: (string)))))
+        left: (string
+          (string_body))
+        right: (string
+          (string_body))))))

@@ -1,0 +1,56 @@
+(script
+  (expression_statement
+    (string
+      (string_body)
+      (embedded_brace_expression
+        (selection_expression
+          (variable)
+          (subscript_expression
+            (qualified_identifier
+              (identifier))
+            (binary_expression
+              left: (string
+                (string_body))
+              right: (string
+                (string_body)
+                (embedded_brace_expression
+                  (selection_expression
+                    (variable)
+                    (call_expression
+                      function: (qualified_identifier
+                        (identifier))
+                      (arguments
+                        (argument
+                          (string
+                            (string_body))))))))))))
+      (string_body)))
+  (expression_statement
+    (string
+      (string_body)
+      (embedded_brace_expression
+        (selection_expression
+          (variable)
+          (call_expression
+            function: (qualified_identifier
+              (identifier))
+            (arguments
+              (argument
+                (heredoc
+                  (embedded_brace_expression
+                    (selection_expression
+                      (variable)
+                      (call_expression
+                        function: (qualified_identifier
+                          (identifier))
+                        (arguments
+                          (argument
+                            (string
+                              (embedded_brace_expression
+                                (selection_expression
+                                  (variable)
+                                  (subscript_expression
+                                    (qualified_identifier
+                                      (identifier))
+                                    (string
+                                      (string_body)))))))))))))))))
+      (string_body))))

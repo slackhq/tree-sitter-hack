@@ -1,4 +1,5 @@
 (script
   (expression_statement
     (prefix_unary_expression
-      operand: (string))))
+      operand: (string
+        (string_body)))))

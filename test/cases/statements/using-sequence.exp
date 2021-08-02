@@ -13,7 +13,9 @@
           (identifier))
         (arguments
           (argument
-            (string))
+            (string
+              (string_body)))
           (argument
-            (string)))))
+            (string
+              (string_body))))))
     (compound_statement)))

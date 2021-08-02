@@ -17,7 +17,8 @@
           (arguments))
         (type_specifier))
       (field_specifier
-        (string)
+        (string
+          (string_body))
         (type_specifier))
       (field_specifier
         (call_expression

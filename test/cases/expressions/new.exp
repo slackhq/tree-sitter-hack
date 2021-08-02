@@ -82,7 +82,8 @@
     (binary_expression
       left: (variable)
       right: (binary_expression
-        left: (string)
+        left: (string
+          (string_body))
         right: (new_expression
           (pipe_variable)
           (arguments

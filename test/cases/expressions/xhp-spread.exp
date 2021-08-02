@@ -17,10 +17,12 @@
             (variable)))
         (xhp_attribute
           (xhp_identifier)
-          (string))
+          (string
+            (string_body)))
         (xhp_attribute
           (xhp_identifier)
-          (string)))
+          (string
+            (string_body))))
       (xhp_close
         (xhp_identifier))))
   (expression_statement
@@ -29,13 +31,15 @@
         (xhp_identifier)
         (xhp_attribute
           (xhp_identifier)
-          (string))
+          (string
+            (string_body)))
         (xhp_attribute
           (xhp_spread_expression
             (variable)))
         (xhp_attribute
           (xhp_identifier)
-          (string)))
+          (string
+            (string_body))))
       (braced_expression
         (variable))
       (xhp_close
@@ -46,10 +50,12 @@
         (xhp_identifier)
         (xhp_attribute
           (xhp_identifier)
-          (string))
+          (string
+            (string_body)))
         (xhp_attribute
           (xhp_identifier)
-          (string))
+          (string
+            (string_body)))
         (xhp_attribute
           (xhp_spread_expression
             (variable))))
