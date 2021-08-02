@@ -3,7 +3,8 @@
     (binary_expression
       left: (subscript_expression
         (variable)
-        (string))
+        (string
+          (string_body)))
       right: (as_expression
         left: (integer)
         right: (type_specifier))))
@@ -11,7 +12,8 @@
     (binary_expression
       left: (subscript_expression
         (variable)
-        (string))
+        (string
+          (string_body)))
       right: (as_expression
         left: (null)
         right: (type_specifier)))))

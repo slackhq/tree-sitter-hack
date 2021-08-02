@@ -5,11 +5,13 @@
         (binary_expression
           left: (qualified_identifier
             (identifier))
-          right: (string)))))
+          right: (string
+            (string_body))))))
   (expression_statement
     (include_expression
       (parenthesized_expression
         (binary_expression
           left: (qualified_identifier
             (identifier))
-          right: (string))))))
+          right: (string
+            (string_body)))))))

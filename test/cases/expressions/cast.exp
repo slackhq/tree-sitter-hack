@@ -1,13 +1,17 @@
 (script
   (expression_statement
     (cast_expression
-      value: (string)))
+      value: (string
+        (string_body))))
   (expression_statement
     (cast_expression
-      value: (string)))
+      value: (string
+        (string_body))))
   (expression_statement
     (cast_expression
-      value: (string)))
+      value: (string
+        (string_body))))
   (expression_statement
     (cast_expression
-      value: (string))))
+      value: (string
+        (string_body)))))

@@ -4,13 +4,16 @@
     (shape_type_specifier
       (field_specifier
         (optional_modifier)
-        (string)
+        (string
+          (string_body))
         (type_specifier))
       (field_specifier
-        (string)
+        (string
+          (string_body))
         (shape_type_specifier
           (field_specifier
-            (string)
+            (string
+              (string_body))
             (type_specifier
               (nullable_modifier)))
           (open_modifier)))

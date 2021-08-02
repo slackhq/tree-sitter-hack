@@ -2,12 +2,15 @@
   (expression_statement
     (prefixed_string
       prefix: (identifier)
-      (string)))
+      (string
+        (string_body))))
   (expression_statement
     (prefixed_string
       prefix: (identifier)
-      (string)))
+      (string
+        (string_body))))
   (expression_statement
     (prefixed_string
       prefix: (identifier)
-      (string))))
+      (string
+        (string_body)))))

@@ -6,15 +6,18 @@
     body: (compound_statement
       (expression_statement
         (yield_expression
-          (string)))
+          (string
+            (string_body))))
       (expression_statement
         (yield_expression
           (yield_expression
             (element_initializer
-              (string)
+              (string
+                (string_body))
               (integer)))))
       (expression_statement
         (yield_expression
           (element_initializer
             (integer)
-            (string)))))))
+            (string
+              (string_body))))))))

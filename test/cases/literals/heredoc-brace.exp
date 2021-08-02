@@ -8,4 +8,58 @@
       (embedded_brace_expression
         (variable))
       (embedded_brace_expression
-        (variable)))))
+        (variable))
+      (embedded_brace_expression
+        (selection_expression
+          (variable)
+          (call_expression
+            function: (qualified_identifier
+              (identifier))
+            (arguments
+              (argument
+                (string
+                  (string_body)))))))
+      (embedded_brace_expression
+        (selection_expression
+          (variable)
+          (subscript_expression
+            (qualified_identifier
+              (identifier))
+            (string
+              (string_body)))))
+      (embedded_brace_expression
+        (selection_expression
+          (variable)
+          (call_expression
+            function: (qualified_identifier
+              (identifier))
+            (arguments
+              (argument
+                (string
+                  (string_body)))))))
+      (embedded_brace_expression
+        (selection_expression
+          (variable)
+          (subscript_expression
+            (qualified_identifier
+              (identifier))
+            (string
+              (string_body)))))
+      (embedded_brace_expression
+        (selection_expression
+          (variable)
+          (call_expression
+            function: (qualified_identifier
+              (identifier))
+            (arguments
+              (argument
+                (string
+                  (string_body)))))))
+      (embedded_brace_expression
+        (selection_expression
+          (variable)
+          (subscript_expression
+            (qualified_identifier
+              (identifier))
+            (string
+              (string_body))))))))

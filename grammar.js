@@ -404,14 +404,18 @@ const rules = {
 
   null: $ => choice('null', 'Null', 'NULL'),
 
-  // prettier-ignore
   string: $ =>
-    token(
-      choice(
-        /'(\\'|\\\\|\\?[^'\\])*'/,
-        /"(\\"|\\\\|\\?[^"\\])*"/,
+    choice(
+      seq("'", alias($.single_quote_body, $.string_body), "'"),
+      seq(
+        '"',
+        repeat(choice($.string_body, $.variable, $.embedded_brace_expression)),
+        '"',
       ),
     ),
+
+  // Breakout single quoted string body for symmetry with double quoted strings.
+  single_quote_body: $ => /(\\'|\\\\|\\?[^'\\])*/,
 
   prefixed_string: $ => seq(field('prefix', $.identifier), $.string),
 
@@ -1153,6 +1157,7 @@ module.exports = grammar({
     $._heredoc_body,
     $._heredoc_end_newline,
     $._heredoc_end,
+    $.string_body,
   ],
 
   supertypes: $ => [

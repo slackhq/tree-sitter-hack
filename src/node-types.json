@@ -2690,6 +2690,29 @@
     "fields": {}
   },
   {
+    "type": "string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "embedded_brace_expression",
+          "named": true
+        },
+        {
+          "type": "string_body",
+          "named": true
+        },
+        {
+          "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "subscript_expression",
     "named": true,
     "fields": {},
@@ -3809,6 +3832,10 @@
     "named": false
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
     "type": "%",
     "named": false
   },
@@ -3826,6 +3853,10 @@
   },
   {
     "type": "&=",
+    "named": false
+  },
+  {
+    "type": "'",
     "named": false
   },
   {
@@ -4198,11 +4229,11 @@
   },
   {
     "type": "float",
-    "named": false
+    "named": true
   },
   {
     "type": "float",
-    "named": true
+    "named": false
   },
   {
     "type": "for",
@@ -4370,11 +4401,11 @@
   },
   {
     "type": "string",
-    "named": true
+    "named": false
   },
   {
-    "type": "string",
-    "named": false
+    "type": "string_body",
+    "named": true
   },
   {
     "type": "super",

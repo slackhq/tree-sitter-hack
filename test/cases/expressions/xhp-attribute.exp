@@ -11,7 +11,8 @@
                 (identifier))
               (arguments
                 (argument
-                  (string)))))))))
+                  (string
+                    (string_body))))))))))
   (expression_statement
     (xhp_expression
       (xhp_open
@@ -24,7 +25,8 @@
                 (identifier))
               (arguments
                 (argument
-                  (string)))))))
+                  (string
+                    (string_body))))))))
       (xhp_string)
       (xhp_close
         (xhp_identifier))))
@@ -34,7 +36,8 @@
         (xhp_identifier)
         (xhp_attribute
           (xhp_identifier)
-          (string))
+          (string
+            (string_body)))
         (xhp_attribute
           (xhp_identifier)
           (braced_expression
@@ -61,7 +64,8 @@
         (xhp_attribute
           (xhp_identifier)
           (braced_expression
-            (string)))
+            (string
+              (string_body))))
         (xhp_attribute
           (xhp_identifier)
           (braced_expression
@@ -72,9 +76,12 @@
             (collection
               (qualified_identifier
                 (identifier))
-              (string)
-              (string)
-              (string))))
+              (string
+                (string_body))
+              (string
+                (string_body))
+              (string
+                (string_body)))))
         (xhp_attribute
           (xhp_identifier)
           (braced_expression
@@ -82,15 +89,21 @@
               (qualified_identifier
                 (identifier))
               (element_initializer
-                (string)
-                (string)))))
+                (string
+                  (string_body))
+                (string
+                  (string_body))))))
         (xhp_attribute
           (xhp_identifier)
           (braced_expression
             (shape
               (field_initializer
-                (string)
-                (string))
+                (string
+                  (string_body))
+                (string
+                  (string_body)))
               (field_initializer
-                (string)
-                (string)))))))))
+                (string
+                  (string_body))
+                (string
+                  (string_body))))))))))

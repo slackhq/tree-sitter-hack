@@ -18,7 +18,8 @@
     (binary_expression
       left: (subscript_expression
         (variable)
-        (string))
+        (string
+          (string_body)))
       right: (integer)))
   (expression_statement
     (binary_expression
@@ -26,7 +27,8 @@
         (variable)
         (subscript_expression
           (variable)
-          (string)))
+          (string
+            (string_body))))
       right: (integer)))
   (expression_statement
     (binary_expression
@@ -35,7 +37,8 @@
           (variable)
           (subscript_expression
             (variable)
-            (string))))
+            (string
+              (string_body)))))
       right: (integer)))
   (expression_statement
     (binary_expression
@@ -44,7 +47,8 @@
           (variable))
         (subscript_expression
           (variable)
-          (string)))
+          (string
+            (string_body))))
       right: (integer)))
   (expression_statement
     (binary_expression
@@ -79,7 +83,8 @@
       left: (list_expression
         (subscript_expression
           (variable)
-          (string))
+          (string
+            (string_body)))
         (subscript_expression
           (variable)
           (integer)))
@@ -93,10 +98,12 @@
           (variable)
           (subscript_expression
             (variable)
-            (string)))
+            (string
+              (string_body))))
         (subscript_expression
           (variable)
-          (string)))
+          (string
+            (string_body))))
       right: (tuple
         (integer)
         (integer))))
@@ -108,12 +115,14 @@
             (variable)
             (subscript_expression
               (variable)
-              (string))))
+              (string
+                (string_body)))))
         (subscript_expression
           (variable)
           (subscript_expression
             (variable)
-            (string))))
+            (string
+              (string_body)))))
       right: (tuple
         (integer)
         (integer)))))

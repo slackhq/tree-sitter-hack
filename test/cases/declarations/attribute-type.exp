@@ -8,7 +8,8 @@
       (nullable_modifier)
       (field_specifier
         (optional_modifier)
-        (string)
+        (string
+          (string_body))
         (type_specifier))))
   (alias_declaration
     (attribute_modifier
