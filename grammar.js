@@ -1058,12 +1058,6 @@ const rules = {
   xhp_enum_type: $ =>
     seq('enum', '{', com(choice($.string, $.integer), ','), '}'),
 
-  xhp_category_declaration: $ =>
-    seq('category', com($.xhp_category_identifier), ';'),
-
-  xhp_children_declaration: $ =>
-    seq('children', com($._xhp_attribute_expression), ';'),
-
   _xhp_attribute_expression: $ =>
     choice(
       $.xhp_identifier,
@@ -1073,17 +1067,6 @@ const rules = {
       alias($._xhp_postfix_unary_expression, $.postfix_unary_expression),
       alias($._xhp_parenthesized_expression, $.parenthesized_expression),
     ),
-
-  _xhp_binary_expression: $ =>
-    prec.left(
-      seq($._xhp_attribute_expression, '|', $._xhp_attribute_expression),
-    ),
-
-  _xhp_postfix_unary_expression: $ =>
-    prec(1, seq($._xhp_attribute_expression, choice('+', '*', '?'))),
-
-  _xhp_parenthesized_expression: $ =>
-    seq('(', com($._xhp_attribute_expression), ')'),
 
   // Misc
 
@@ -1110,6 +1093,24 @@ const rules = {
 
   _anonymous_function_use_clause: $ =>
     seq('use', '(', com($.variable, ','), ')'),
+
+  // See https://github.com/hhvm/xhp-lib/pull/276 for deprecation info
+  xhp_children_declaration: $ =>
+    seq('children', com($._xhp_attribute_expression), ';'),
+
+  xhp_category_declaration: $ =>
+    seq('category', com($.xhp_category_identifier), ';'),
+
+  _xhp_binary_expression: $ =>
+    prec.left(
+      seq($._xhp_attribute_expression, '|', $._xhp_attribute_expression),
+    ),
+
+  _xhp_postfix_unary_expression: $ =>
+    prec(1, seq($._xhp_attribute_expression, choice('+', '*', '?'))),
+
+  _xhp_parenthesized_expression: $ =>
+    seq('(', com($._xhp_attribute_expression), ')'),
 };
 
 /**
