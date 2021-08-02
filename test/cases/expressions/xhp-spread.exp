@@ -6,7 +6,6 @@
         (xhp_attribute
           (xhp_spread_expression
             (variable))))
-      (xhp_string)
       (xhp_close
         (xhp_identifier))))
   (expression_statement
