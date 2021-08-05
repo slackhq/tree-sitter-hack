@@ -422,7 +422,7 @@ const rules = {
       '"',
     ),
 
-  _string_character: $ => choice(token(/([^"\\])/), token(prec(1, '#'))),
+  _string_character: $ => choice(token(/([^"\\])/), token(prec(1, choice('#', '//', '/*')))),
 
   // These are the relevant escape sequences that will affect parsing an embedded expression in the string
   _escape_sequence: $ => token(seq('\\', opt(choice('\\', '"', '$', '{',)))),
