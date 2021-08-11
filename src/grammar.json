@@ -1,9 +1,5 @@
 {
   "name": "hack",
-
-
-
-  
   "word": "identifier",
   "rules": {
     "script": {
