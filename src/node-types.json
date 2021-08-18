@@ -3239,7 +3239,94 @@
   {
     "type": "type_specifier",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "array",
+            "named": false
+          },
+          {
+            "type": "arraykey",
+            "named": false
+          },
+          {
+            "type": "bool",
+            "named": false
+          },
+          {
+            "type": "darray",
+            "named": false
+          },
+          {
+            "type": "dict",
+            "named": false
+          },
+          {
+            "type": "dynamic",
+            "named": false
+          },
+          {
+            "type": "float",
+            "named": false
+          },
+          {
+            "type": "int",
+            "named": false
+          },
+          {
+            "type": "keyset",
+            "named": false
+          },
+          {
+            "type": "mixed",
+            "named": false
+          },
+          {
+            "type": "nonnull",
+            "named": false
+          },
+          {
+            "type": "noreturn",
+            "named": false
+          },
+          {
+            "type": "null",
+            "named": true
+          },
+          {
+            "type": "qualified_identifier",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": false
+          },
+          {
+            "type": "varray",
+            "named": false
+          },
+          {
+            "type": "vec",
+            "named": false
+          },
+          {
+            "type": "void",
+            "named": false
+          },
+          {
+            "type": "xhp_class_identifier",
+            "named": true
+          },
+          {
+            "type": "xhp_identifier",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": false,
@@ -3249,15 +3336,7 @@
           "named": true
         },
         {
-          "type": "null",
-          "named": true
-        },
-        {
           "type": "nullable_modifier",
-          "named": true
-        },
-        {
-          "type": "qualified_identifier",
           "named": true
         },
         {
@@ -3266,14 +3345,6 @@
         },
         {
           "type": "type_arguments",
-          "named": true
-        },
-        {
-          "type": "xhp_class_identifier",
-          "named": true
-        },
-        {
-          "type": "xhp_identifier",
           "named": true
         }
       ]

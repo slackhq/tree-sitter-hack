@@ -433,11 +433,14 @@ const rules = {
   type_specifier: $ =>
     seq(
       rep($._type_modifier),
-      choice(
-        $._primitive_type,
-        $.qualified_identifier,
-        $._collection_type,
-        $._xhp_identifier,
+      field(
+        'name',
+        choice(
+          $._primitive_type,
+          $.qualified_identifier,
+          $._collection_type,
+          $._xhp_identifier,
+        ),
       ),
       opt($.type_arguments),
     ),

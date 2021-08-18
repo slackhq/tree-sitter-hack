@@ -2057,25 +2057,29 @@
           }
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "_primitive_type"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "qualified_identifier"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_collection_type"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "_xhp_identifier"
-            }
-          ]
+          "type": "FIELD",
+          "name": "name",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "_primitive_type"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "qualified_identifier"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_collection_type"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_xhp_identifier"
+              }
+            ]
+          }
         },
         {
           "type": "CHOICE",
@@ -8278,6 +8282,7 @@
       "list_expression"
     ]
   ],
+  "precedences": [],
   "externals": [
     {
       "type": "SYMBOL",
