@@ -144,7 +144,7 @@ struct Scanner {
     if (expected[HEREDOC_END]) print("%s ", TokenTypes[HEREDOC_END]);
     print("\n");
 
-    if (expected[HEREDOC_BODY] || expected[HEREDOC_END]) {
+    if ((expected[HEREDOC_BODY] || expected[HEREDOC_END]) && !delimiter.empty()) {
       return scan_body(lexer);
     }
 
