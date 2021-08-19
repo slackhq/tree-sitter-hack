@@ -172,6 +172,9 @@ Heredoc braced almost
 {$ var}
 {\$func("arg")}
 {map()->var}
+EOF;
+
+<<<EOF
 {C::$scoped}
 EOF;
 
@@ -186,6 +189,8 @@ EOF;
 ---
 
 (script
+  (expression_statement
+    (heredoc))
   (expression_statement
     (heredoc
       (variable)))

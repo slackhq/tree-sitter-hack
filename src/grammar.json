@@ -464,7 +464,12 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_embedded_opening_brace"
+          },
+          "named": false,
           "value": "{"
         },
         {
@@ -8659,6 +8664,10 @@
     {
       "type": "SYMBOL",
       "name": "_heredoc_end"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_embedded_opening_brace"
     }
   ],
   "inline": [
