@@ -2,6 +2,9 @@
 {$ var}
 {\$func("arg")}
 {map()->var}
+EOF;
+
+<<<EOF
 {C::$scoped}
 EOF;
 

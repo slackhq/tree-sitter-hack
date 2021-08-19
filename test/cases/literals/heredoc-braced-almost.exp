@@ -1,5 +1,7 @@
 (script
   (expression_statement
+    (heredoc))
+  (expression_statement
     (heredoc
       (variable)))
   (expression_statement
