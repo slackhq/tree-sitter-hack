@@ -1,0 +1,59 @@
+(script
+  (expression_statement
+    (string
+      (embedded_brace_expression
+        (variable))))
+  (expression_statement
+    (string
+      (embedded_brace_expression
+        (selection_expression
+          (variable)
+          (call_expression
+            function: (qualified_identifier
+              (identifier))
+            (arguments
+              (argument
+                (string))))))))
+  (expression_statement
+    (string
+      (embedded_brace_expression
+        (selection_expression
+          (variable)
+          (qualified_identifier
+            (identifier))))))
+  (expression_statement
+    (string
+      (embedded_brace_expression
+        (selection_expression
+          (variable)
+          (subscript_expression
+            (qualified_identifier
+              (identifier))
+            (string))))))
+  (expression_statement
+    (string
+      (embedded_brace_expression
+        (selection_expression
+          (variable)
+          (subscript_expression
+            (qualified_identifier
+              (identifier))
+            (binary_expression
+              left: (string)
+              right: (string
+                (embedded_brace_expression
+                  (selection_expression
+                    (variable)
+                    (call_expression
+                      function: (qualified_identifier
+                        (identifier))
+                      (arguments
+                        (argument
+                          (string)))))))))))))
+  (expression_statement
+    (string
+      (embedded_expression
+        (selection_expression
+          (variable)
+          (qualified_identifier
+            (identifier)))))))

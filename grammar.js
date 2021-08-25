@@ -406,14 +406,47 @@ const rules = {
 
   // prettier-ignore
   string: $ =>
-    token(
-      choice(
-        /'(\\'|\\\\|\\?[^'\\])*'/,
-        /"(\\"|\\\\|\\?[^"\\])*"/,
-      ),
+    choice(
+      $._single_quoted_string,
+      $._double_quoted_string,
     ),
 
-  prefixed_string: $ => seq(field('prefix', $.identifier), $.string),
+  // Breakout single quoted string for symmetry with double quoted strings.
+  _single_quoted_string: $ => /'(\\'|\\\\|\\?[^'\\])*'/,
+
+  // Reference: https://docs.hhvm.com/hack/source-code-fundamentals/literals#string-literals__double-quoted-string-literals
+  _double_quoted_string: $ =>
+    seq(
+      '"',
+      choice.rep($._string_character, $._escape_sequence, $.embedded_expression, $.embedded_brace_expression),
+      '"',
+    ),
+
+  _string_character: $ => choice(token(/([^"\\])/), token(prec(1, choice('#', '//', '/*')))),
+
+  // These are the relevant escape sequences that will affect parsing an embedded expression in the string
+  _escape_sequence: $ => token(seq('\\', opt(choice('\\', '"', '$', '{',)))),
+
+  embedded_expression: $ => seq($._embedded_expression),
+
+  _embedded_expression: $ =>
+    choice(
+      $.variable,
+      alias($._embedded_subscript_expression, $.subscript_expression),
+      alias($._embedded_selection_expression, $.selection_expression),
+    ),
+
+  _embedded_subscript_expression: $ =>
+    seq($.variable, '[', opt($._expression), ']'),
+
+  _embedded_selection_expression: $ =>
+    seq(
+      $.variable,
+      field('selection_operator', choice('?->', '->')),
+      $._variablish,
+    ),
+
+  prefixed_string: $ => prec(-1, seq(field('prefix', $.identifier), $.string)),
 
   // Types
 

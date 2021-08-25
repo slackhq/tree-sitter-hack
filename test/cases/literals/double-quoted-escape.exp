@@ -1,0 +1,15 @@
+(script
+  (expression_statement
+    (string))
+  (expression_statement
+    (string))
+  (expression_statement
+    (string))
+  (expression_statement
+    (string))
+  (expression_statement
+    (string))
+  (expression_statement
+    (string
+      (embedded_expression
+        (variable)))))
