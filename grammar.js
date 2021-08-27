@@ -60,6 +60,7 @@ const rules = {
       'clone',
       'new',
       'print',
+      'namespace',
       $._primitive_type,
       $._collection_type,
     ),

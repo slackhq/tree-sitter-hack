@@ -2000,6 +2000,8 @@ $this->print();
 
 $this->new();
 
+$this->namespace();
+
 $this->clone()->new()->print()->$item;
 
 $this->bool();
@@ -2024,6 +2026,12 @@ $this->keyset();
 ---
 
 (script
+  (expression_statement
+    (call_expression
+      function: (selection_expression
+        (variable)
+        (identifier))
+      (arguments)))
   (expression_statement
     (call_expression
       function: (selection_expression
