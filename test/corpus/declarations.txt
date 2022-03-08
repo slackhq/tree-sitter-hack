@@ -866,6 +866,7 @@ const int where = 1;
 const int while = 1;
 const int xor = 1;
 const int yield = 1;
+
 ---
 
 (script
@@ -2804,6 +2805,7 @@ A::where;
 A::while;
 A::xor;
 A::yield;
+
 ---
 
 (script
