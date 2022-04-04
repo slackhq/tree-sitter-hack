@@ -10,9 +10,10 @@ Across our scripts we use a few tools. Using `brew install`, you will probably n
 
 You will also need [Hack](https://docs.hhvm.com/hack/getting-started/getting-started) installed to run `hh_*****` commands.
 
-We highly recommend using our editor of choice, VSCode, as it integrates well our included tasks.
+We highly recommend using our editor of choice, VSCode, as it integrates well our included tasks. **Please install the VSCode Prettier extension to keep our codebase readable and prevent extra noise in commits.**
 
 Look in [/bin](/bin) for a variety of useful scripts.
+
 
 ## Tasks
 
