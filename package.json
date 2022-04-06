@@ -38,7 +38,9 @@
   "tree-sitter": [
     {
       "scope": "source.hack",
-      "file-types": ["hack"],
+      "file-types": [
+        "hack"
+      ],
       "first-line-regex": "#!.*\\bhack$"
     }
   ]
