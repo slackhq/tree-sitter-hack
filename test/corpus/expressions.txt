@@ -2045,15 +2045,15 @@ $this->keyset();
         (identifier))
       (arguments)))
   (expression_statement
+    (selection_expression
+      (variable)
+      (identifier)))
+  (expression_statement
     (call_expression
       function: (selection_expression
         (variable)
         (identifier))
       (arguments)))
-  (expression_statement
-    (selection_expression
-      (variable)
-      (identifier)))
   (expression_statement
     (call_expression
       function: (selection_expression
