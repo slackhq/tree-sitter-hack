@@ -2519,6 +2519,10 @@
         },
         {
           "type": "STRING",
+          "value": "num"
+        },
+        {
+          "type": "STRING",
           "value": "string"
         },
         {
@@ -2548,6 +2552,14 @@
         {
           "type": "STRING",
           "value": "noreturn"
+        },
+        {
+          "type": "STRING",
+          "value": "nothing"
+        },
+        {
+          "type": "STRING",
+          "value": "resource"
         }
       ]
     },
