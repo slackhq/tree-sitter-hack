@@ -208,6 +208,7 @@ const rules = {
       $.require_expression,
       $.anonymous_function_expression,
       $.xhp_expression,
+      $.function_pointer,
     ),
 
   // Statements
@@ -1160,6 +1161,22 @@ const rules = {
       alias($._xhp_parenthesized_expression, $.parenthesized_expression),
     ),
 
+  // We want function pointers to parse only as a "last resort" as there is
+  // ambiguity in expressions like
+  // ```
+  // foo<int, string>()
+  // ```
+  // which should parse as a function call, but could also parse as a function
+  // pointer _being_ called.
+  function_pointer: $ =>
+    prec.dynamic(-1, seq(
+      choice(
+        $.scoped_identifier,
+        $.qualified_identifier,
+      ),
+      $.type_arguments,
+    )),
+
   // Misc
 
   comment: $ =>
@@ -1267,10 +1284,13 @@ module.exports = grammar({
     [$.binary_expression, $.prefix_unary_expression, $.call_expression],
     [$._expression, $.parameter],
     [$._expression, $.type_specifier],
+    [$._expression, $.type_specifier, $.function_pointer],
     [$._expression, $.field_initializer],
+    [$._expression, $.function_pointer],
     [$.scoped_identifier, $._type_constant],
     [$.context_const_declaration,$._member_modifier],
     [$.type_specifier],
+    [$.type_specifier, $.function_pointer],
     [$.shape_type_specifier, $.shape],
     [$.qualified_identifier],
     [$.qualified_identifier, $.use_type],
