@@ -67,7 +67,10 @@ const rules = {
 
   qualified_identifier: $ =>
     choice(
-      seq(opt(choice($.identifier, 'namespace')), rep1(seq('\\', $.identifier))),
+      seq(
+        opt(choice($.identifier, 'namespace')),
+        rep1(seq('\\', $.identifier)),
+      ),
       $.identifier,
     ),
 
@@ -706,7 +709,7 @@ const rules = {
         seq(
           $.parameters,
           opt($.capability_list),
-          opt(seq(':', field('return_type', $._type)))
+          opt(seq(':', field('return_type', $._type))),
         ),
       ),
       '==>',
@@ -784,15 +787,9 @@ const rules = {
 
   capability: $ =>
     choice(
-      seq(
-        $.identifier,
-        opt($.type_parameters),
-      ),
+      seq($.identifier, opt($.type_parameters)),
       $.scoped_identifier,
-      seq(
-        'ctx',
-        $.variable
-      ),
+      seq('ctx', $.variable),
     ),
 
   parameters: $ =>
@@ -1015,10 +1012,9 @@ const rules = {
       opt($.extends_clause),
       field('type', $._type),
       '{',
-      rep(choice(
-        $.typed_enumerator,
-        seq('abstract', $._type, $.identifier, ';'),
-      )),
+      rep(
+        choice($.typed_enumerator, seq('abstract', $._type, $.identifier, ';')),
+      ),
       '}',
     ),
   /**
@@ -1169,13 +1165,13 @@ const rules = {
   // which should parse as a function call, but could also parse as a function
   // pointer _being_ called.
   function_pointer: $ =>
-    prec.dynamic(-1, seq(
-      choice(
-        $.scoped_identifier,
-        $.qualified_identifier,
+    prec.dynamic(
+      -1,
+      seq(
+        choice($.scoped_identifier, $.qualified_identifier),
+        $.type_arguments,
       ),
-      $.type_arguments,
-    )),
+    ),
 
   // Misc
 
@@ -1288,7 +1284,7 @@ module.exports = grammar({
     [$._expression, $.field_initializer],
     [$._expression, $.function_pointer],
     [$.scoped_identifier, $._type_constant],
-    [$.context_const_declaration,$._member_modifier],
+    [$.context_const_declaration, $._member_modifier],
     [$.type_specifier],
     [$.type_specifier, $.function_pointer],
     [$.shape_type_specifier, $.shape],
