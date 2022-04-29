@@ -41,7 +41,7 @@
       "file-types": [
         "hack"
       ],
-      "first-line-regex": "(/<\\?hh ./i)|(#!/.+ hhvm)"
+      "first-line-regex": "^((<\\?hh.*)|(#!.+ hhvm))"
     }
   ]
 }
