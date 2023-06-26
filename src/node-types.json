@@ -86,6 +86,14 @@
         "named": true
       },
       {
+        "type": "enum_class_label",
+        "named": true
+      },
+      {
+        "type": "function_pointer",
+        "named": true
+      },
+      {
         "type": "heredoc",
         "named": true
       },
@@ -459,6 +467,10 @@
       "types": [
         {
           "type": "async_modifier",
+          "named": true
+        },
+        {
+          "type": "capability_list",
           "named": true
         },
         {
@@ -865,7 +877,7 @@
     "fields": {
       "function": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "_expression",
@@ -907,23 +919,49 @@
           "named": true
         },
         {
-          "type": "call_expression",
-          "named": true
-        },
-        {
-          "type": "selection_expression",
-          "named": true
-        },
-        {
-          "type": "subscript_expression",
-          "named": true
-        },
-        {
           "type": "type_arguments",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "capability",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "scoped_identifier",
+          "named": true
+        },
+        {
+          "type": "type_parameters",
           "named": true
         },
         {
           "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "capability_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "capability",
           "named": true
         }
       ]
@@ -1201,6 +1239,74 @@
     }
   },
   {
+    "type": "context_const_declaration",
+    "named": true,
+    "fields": {
+      "as": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "as",
+            "named": false
+          },
+          {
+            "type": "capability_list",
+            "named": true
+          }
+        ]
+      },
+      "context": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "=",
+            "named": false
+          },
+          {
+            "type": "capability_list",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "super": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "capability_list",
+            "named": true
+          },
+          {
+            "type": "super",
+            "named": false
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "abstract_modifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "continue_statement",
     "named": true,
     "fields": {},
@@ -1272,7 +1378,7 @@
     }
   },
   {
-    "type": "embedded_brace_expression",
+    "type": "embedded_braced_expression",
     "named": true,
     "fields": {},
     "children": {
@@ -1342,6 +1448,32 @@
         },
         {
           "type": "typed_enumerator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "enum_class_label",
+    "named": true,
+    "fields": {
+      "enum_class": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "qualified_identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
           "named": true
         }
       ]
@@ -1735,6 +1867,10 @@
           "named": true
         },
         {
+          "type": "capability_list",
+          "named": true
+        },
+        {
           "type": "parameters",
           "named": true
         },
@@ -1744,6 +1880,29 @@
         },
         {
           "type": "where_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "function_pointer",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "qualified_identifier",
+          "named": true
+        },
+        {
+          "type": "scoped_identifier",
+          "named": true
+        },
+        {
+          "type": "type_arguments",
           "named": true
         }
       ]
@@ -1770,6 +1929,10 @@
       "types": [
         {
           "type": "_type",
+          "named": true
+        },
+        {
+          "type": "capability_list",
           "named": true
         },
         {
@@ -1804,7 +1967,7 @@
       "required": false,
       "types": [
         {
-          "type": "embedded_brace_expression",
+          "type": "embedded_braced_expression",
           "named": true
         },
         {
@@ -2000,6 +2163,10 @@
           "named": true
         },
         {
+          "type": "capability_list",
+          "named": true
+        },
+        {
           "type": "parameters",
           "named": true
         }
@@ -2031,6 +2198,10 @@
       "types": [
         {
           "type": "const_declaration",
+          "named": true
+        },
+        {
+          "type": "context_const_declaration",
           "named": true
         },
         {
@@ -2121,6 +2292,10 @@
         },
         {
           "type": "attribute_modifier",
+          "named": true
+        },
+        {
+          "type": "capability_list",
           "named": true
         },
         {
@@ -3937,6 +4112,10 @@
     "named": false
   },
   {
+    "type": "#",
+    "named": false
+  },
+  {
     "type": "%",
     "named": false
   },
@@ -4277,6 +4456,10 @@
     "named": true
   },
   {
+    "type": "ctx",
+    "named": false
+  },
+  {
     "type": "darray",
     "named": false
   },
@@ -4330,11 +4513,11 @@
   },
   {
     "type": "float",
-    "named": false
+    "named": true
   },
   {
     "type": "float",
-    "named": true
+    "named": false
   },
   {
     "type": "for",
@@ -4514,11 +4697,11 @@
   },
   {
     "type": "string",
-    "named": true
+    "named": false
   },
   {
     "type": "string",
-    "named": false
+    "named": true
   },
   {
     "type": "super",

@@ -67,7 +67,10 @@ const rules = {
 
   qualified_identifier: $ =>
     choice(
-      seq(opt(choice($.identifier, 'namespace')), rep1(seq('\\', $.identifier))),
+      seq(
+        opt(choice($.identifier, 'namespace')),
+        rep1(seq('\\', $.identifier)),
+      ),
       $.identifier,
     ),
 
@@ -147,35 +150,23 @@ const rules = {
       '<<<',
       $._heredoc_start,
       opt(alias($._heredoc_start_newline, '\n')),
-      rep(choice($._heredoc_body, $.variable, $.embedded_brace_expression)),
+      rep(choice($._heredoc_body, $.variable, $.embedded_braced_expression)),
       opt(alias($._heredoc_end_newline, '\n')),
       $._heredoc_end,
     ),
 
-  embedded_brace_expression: $ => seq($._embedded_brace_expression, '}'),
-
-  _embedded_brace_expression: $ =>
-    choice(
-      alias(token(seq('{$', identifier)), $.variable),
-      alias($._embedded_brace_call_expression, $.call_expression),
-      alias($._embedded_brace_subscript_expression, $.subscript_expression),
-      alias($._embedded_brace_selection_expression, $.selection_expression),
-    ),
-
-  _embedded_brace_call_expression: $ =>
-    seq($._embedded_brace_expression, $.arguments),
-
-  _embedded_brace_subscript_expression: $ =>
-    seq($._embedded_brace_expression, '[', opt($._expression), ']'),
-
-  _embedded_brace_selection_expression: $ =>
-    prec(
-      -1,
-      seq(
-        $._embedded_brace_expression,
-        field('selection_operator', choice('?->', '->')),
-        $._variablish,
+  embedded_braced_expression: $ =>
+    seq(
+      // Use an external scanner for the opening brace so we can restrict embedded braced
+      // expressions to ones that start with a $.variable.
+      alias($._embedded_opening_brace, '{'),
+      choice(
+        $.variable,
+        $.call_expression,
+        $.subscript_expression,
+        $.selection_expression,
       ),
+      '}',
     ),
 
   braced_expression: $ => seq('{', $._expression, '}'),
@@ -208,6 +199,8 @@ const rules = {
       $.require_expression,
       $.anonymous_function_expression,
       $.xhp_expression,
+      $.function_pointer,
+      $.enum_class_label,
     ),
 
   // Statements
@@ -458,6 +451,7 @@ const rules = {
       '(',
       opt(com(opt($.inout_modifier), $._type, opt($.variadic_modifier), ',')),
       ')',
+      opt($.capability_list),
       ':',
       field('return_type', $._type),
       ')',
@@ -704,7 +698,11 @@ const rules = {
       choice(
         // Make a single-parameter lambda node look like any other lambda node.
         alias($._single_parameter_parameters, $.parameters),
-        seq($.parameters, opt(seq(':', field('return_type', $._type)))),
+        seq(
+          $.parameters,
+          opt($.capability_list),
+          opt(seq(':', field('return_type', $._type))),
+        ),
       ),
       '==>',
       field('body', choice($._expression, $.compound_statement)),
@@ -772,8 +770,18 @@ const rules = {
       field('name', $.identifier),
       opt($.type_parameters),
       $.parameters,
+      opt($.capability_list),
       opt(seq(':', opt($.attribute_modifier), field('return_type', $._type))),
       opt($.where_clause),
+    ),
+
+  capability_list: $ => seq('[', opt(com($.capability)), ']'),
+
+  capability: $ =>
+    choice(
+      seq($.identifier, opt($.type_parameters)),
+      $.scoped_identifier,
+      seq('ctx', $.variable),
     ),
 
   parameters: $ =>
@@ -838,6 +846,7 @@ const rules = {
           $.method_declaration,
           $.property_declaration,
           $.type_const_declaration,
+          $.context_const_declaration,
           $.trait_use_clause,
           $.require_implements_clause,
           $.require_extends_clause,
@@ -932,6 +941,18 @@ const rules = {
       ';',
     ),
 
+  context_const_declaration: $ =>
+    seq(
+      opt($.abstract_modifier),
+      'const',
+      'ctx',
+      field('name', $.identifier),
+      field('super', opt(seq('super', $.capability_list))),
+      field('as', opt(seq('as', $.capability_list))),
+      field('context', opt(seq('=', $.capability_list))),
+      ';',
+    ),
+
   const_declaration: $ =>
     seq('const', field('type', opt($._type)), com($.const_declarator), ';'),
 
@@ -983,10 +1004,9 @@ const rules = {
       opt($.extends_clause),
       field('type', $._type),
       '{',
-      rep(choice(
-        $.typed_enumerator,
-        seq('abstract', $._type, $.identifier, ';'),
-      )),
+      rep(
+        choice($.typed_enumerator, seq('abstract', $._type, $.identifier, ';')),
+      ),
       '}',
     ),
   /**
@@ -1006,6 +1026,9 @@ const rules = {
       rep($.typed_enumerator),
       '}',
     ),
+
+  enum_class_label: $ =>
+    seq(field('enum_class', opt($.qualified_identifier)), '#', $.identifier),
 
   enumerator: $ => seq($.identifier, '=', $._expression, ';'),
 
@@ -1129,16 +1152,26 @@ const rules = {
       alias($._xhp_parenthesized_expression, $.parenthesized_expression),
     ),
 
+  // We want function pointers to parse only as a "last resort" as there is
+  // ambiguity in expressions like
+  // ```
+  // foo<int, string>()
+  // ```
+  // which should parse as a function call, but could also parse as a function
+  // pointer _being_ called.
+  function_pointer: $ =>
+    prec.dynamic(
+      -1,
+      seq(
+        choice($.scoped_identifier, $.qualified_identifier),
+        $.type_arguments,
+      ),
+    ),
+
   // Misc
 
   comment: $ =>
-    token(
-      choice(
-        seq('#', /.*/),
-        seq('//', /.*/),
-        seq('/*', /[^*]*\*+([^/*][^*]*\*+)*/, '/'),
-      ),
-    ),
+    token(choice(seq('//', /.*/), seq('/*', /[^*]*\*+([^/*][^*]*\*+)*/, '/'))),
 
   // Future Deprecations
 
@@ -1147,6 +1180,7 @@ const rules = {
       opt($.async_modifier),
       'function',
       $.parameters,
+      opt($.capability_list),
       opt(seq(':', field('return_type', $._type))),
       opt(alias($._anonymous_function_use_clause, $.use_clause)),
       field('body', $.compound_statement),
@@ -1205,6 +1239,7 @@ module.exports = grammar({
     $._heredoc_body,
     $._heredoc_end_newline,
     $._heredoc_end,
+    $._embedded_opening_brace,
   ],
 
   supertypes: $ => [
@@ -1235,9 +1270,13 @@ module.exports = grammar({
     [$.binary_expression, $.prefix_unary_expression, $.call_expression],
     [$._expression, $.parameter],
     [$._expression, $.type_specifier],
+    [$._expression, $.type_specifier, $.function_pointer],
     [$._expression, $.field_initializer],
+    [$._expression, $.function_pointer],
     [$.scoped_identifier, $._type_constant],
+    [$.context_const_declaration, $._member_modifier],
     [$.type_specifier],
+    [$.type_specifier, $.function_pointer],
     [$.shape_type_specifier, $.shape],
     [$.qualified_identifier],
     [$.qualified_identifier, $.use_type],

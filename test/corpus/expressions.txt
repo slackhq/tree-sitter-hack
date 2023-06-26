@@ -92,6 +92,24 @@ $f4 = function($p1): int use ($p2, $p3) {};
         body: (compound_statement)))))
 
 ==========================
+Anonymous function with capabilities
+==========================
+
+function()[C]: void {};
+
+---
+
+(script
+  (expression_statement
+    (anonymous_function_expression
+      (parameters)
+      (capability_list
+        (capability
+          (identifier)))
+      (type_specifier)
+      (compound_statement))))
+
+==========================
 As
 ==========================
 
@@ -870,13 +888,11 @@ Set {'foo', 'bar'};
 Comments
 ==========================
 
-// a ? : / */ # + re""
+// a ? : / */ // + re""
 
-# a ? : / */ # + re""
+/* a ? : / */ 1 + 1; // + re""
 
-/* a ? : / */ 1 + 1; # + re""
-
-/* # \
+/*\
 *\/ 1 + 1
 */
 
@@ -884,7 +900,6 @@ Comments
 ---
 
 (script
-  (comment)
   (comment)
   (comment)
   (expression_statement
@@ -939,6 +954,30 @@ dict[false => null, 2.3 => 1];
       (element_initializer
         (float)
         (integer)))))
+
+==========================
+Enum class labels
+==========================
+
+E#B;
+f(#B);
+
+---
+
+(script
+  (expression_statement
+    (enum_class_label
+      (qualified_identifier
+        (identifier))
+      (identifier)))
+  (expression_statement
+    (call_expression
+      (qualified_identifier
+        (identifier))
+      (arguments
+        (argument
+          (enum_class_label
+            (identifier)))))))
 
 ==========================
 Function call
@@ -1142,6 +1181,48 @@ arg->arg();
       (arguments))))
 
 ==========================
+Function pointers
+==========================
+
+MyClass::bar<>;
+foo<>;
+\Foo\Bar\Baz\derp<>;
+fizz<int, _>;
+
+---
+
+  (script
+    (expression_statement
+      (function_pointer
+        (scoped_identifier
+          (qualified_identifier
+            (identifier))
+          (identifier))
+        (type_arguments)))
+    (expression_statement
+      (function_pointer
+        (qualified_identifier
+          (identifier))
+        (type_arguments)))
+    (expression_statement
+      (function_pointer
+        (qualified_identifier
+          (identifier)
+          (identifier)
+          (identifier)
+          (identifier))
+        (type_arguments)))
+    (expression_statement
+      (function_pointer
+        (qualified_identifier
+          (identifier))
+        (type_arguments
+          (type_specifier)
+          (type_specifier
+            (qualified_identifier
+              (identifier)))))))
+
+==========================
 Include
 ==========================
 
@@ -1253,7 +1334,7 @@ $x ==> $x + 1;
 Lambda attribute
 ==========================
 
-# HHVM requires parens to parse correctly 🤔 Tree-sitter doesn't.
+// HHVM requires parens to parse correctly 🤔 Tree-sitter doesn't.
 (<<A3(1), A2(2,3,)>>(int $x): int ==> $x + 1);
 
 (<<Attr, Bttr(1)>> $x ==> {});
@@ -1301,6 +1382,31 @@ Lambda attribute
           (parameter
             name: (variable)))
         body: (compound_statement)))))
+
+==========================
+Lambda with capabilities
+==========================
+
+()[] ==> {};
+()[io] ==> {echo "output"; };
+
+---
+
+(script
+  (expression_statement
+    (lambda_expression
+      (parameters)
+      (capability_list)
+      (compound_statement)))
+  (expression_statement
+    (lambda_expression
+      (parameters)
+      (capability_list
+        (capability
+          (identifier)))
+      (compound_statement
+        (echo_statement
+          (string))))))
 
 ==========================
 Lambda with lambda arg
@@ -2352,9 +2458,9 @@ funcshion<>();
 
 new Cluss<int>();
 
-# Weird. Hack allows empty type arguments on function calls but not class instantiation.
-# new Cluss<>();
-# new Cluss<Cluss<>>();
+// Weird. Hack allows empty type arguments on function calls but not class instantiation.
+// new Cluss<>();
+// new Cluss<Cluss<>>();
 
 ---
 
