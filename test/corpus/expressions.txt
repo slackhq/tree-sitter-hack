@@ -1680,6 +1680,20 @@ $p1 = "Point" |> new $$(12);
               (integer))))))))
 
 ==========================
+Num
+==========================
+
+$x is num;
+
+---
+
+(script
+  (expression_statement
+    (is_expression
+      left: (variable)
+      right: (type_specifier))))
+
+==========================
 Pipe
 ==========================
 

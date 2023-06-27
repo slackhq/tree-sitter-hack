@@ -4612,12 +4612,20 @@
     "named": false
   },
   {
+    "type": "nothing",
+    "named": false
+  },
+  {
     "type": "null",
     "named": false
   },
   {
     "type": "nullable_modifier",
     "named": true
+  },
+  {
+    "type": "num",
+    "named": false
   },
   {
     "type": "open_modifier",
@@ -4661,6 +4669,10 @@
   },
   {
     "type": "require_once",
+    "named": false
+  },
+  {
+    "type": "resource",
     "named": false
   },
   {

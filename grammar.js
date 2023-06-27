@@ -487,6 +487,7 @@ const rules = {
       'bool',
       'float',
       'int',
+      'num',
       'string',
       'arraykey',
       'void',
@@ -495,6 +496,8 @@ const rules = {
       'mixed',
       'dynamic',
       'noreturn',
+      'nothing',
+      'resource',
     ),
 
   type_arguments: $ => seq('<', opt(com($._type, ',')), '>'),
