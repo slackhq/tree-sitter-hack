@@ -94,9 +94,9 @@ typedef struct {
   char *data;
 } String;
 
-String string_new() { return (String){.cap = 16, .len = 0, .data = calloc(1, 17)}; }
+static String string_new() { return (String){.cap = 16, .len = 0, .data = calloc(1, 17)}; }
 
-void string_resize(String *string, uint32_t cap) {
+static void string_resize(String *string, uint32_t cap) {
   void *tmp = realloc(string->data, (cap + 1));
   assert(tmp != NULL);
   string->data = tmp;
@@ -104,26 +104,26 @@ void string_resize(String *string, uint32_t cap) {
   string->cap = cap;
 }
 
-void string_grow(String *string, uint32_t cap) {
+static void string_grow(String *string, uint32_t cap) {
   if (string->cap < cap) {
     string_resize(string, cap);
   }
 }
 
-void string_push(String *string, char chr) {
+static void string_push(String *string, char chr) {
   if (string->cap == string->len) {
     string_resize(string, MAX(16, string->len * 2));
   }
   string->data[string->len++] = chr;
 }
 
-void string_free(String *string) {
+static void string_free(String *string) {
   if (string->data != NULL) {
     free(string->data);
   }
 }
 
-void string_clear(String *string) {
+static void string_clear(String *string) {
   string->len = 0;
   memset(string->data, 0, string->cap);
 }
@@ -160,7 +160,7 @@ static endline str(int32_t chr) {
   }
 }
 
-unsigned serialize(Scanner *scanner, char *buffer) {
+static unsigned serialize(Scanner *scanner, char *buffer) {
   if (scanner->delimiter.len + 2 >= TREE_SITTER_SERIALIZATION_BUFFER_SIZE) {
     return 0;
   }
@@ -171,7 +171,7 @@ unsigned serialize(Scanner *scanner, char *buffer) {
   return scanner->delimiter.len + 3;
 }
 
-void deserialize(Scanner *scanner, const char *buffer, unsigned length) {
+static void deserialize(Scanner *scanner, const char *buffer, unsigned length) {
   if (length == 0) {
     scanner->is_nowdoc = false;
     scanner->did_start = false;
@@ -193,7 +193,7 @@ static inline bool is_identifier_start_char(int32_t chr) {
          (128 <= chr && chr <= 255);
 }
 
-bool scan_delimiter(Scanner *scanner, TSLexer *lexer) {
+static bool scan_delimiter(Scanner *scanner, TSLexer *lexer) {
   print("scan_delimiter() <-\n");
   for (unsigned long index = 0; index < scanner->delimiter.len; index++) {
     if (scanner->delimiter.data[index] == peek()) {
@@ -205,7 +205,7 @@ bool scan_delimiter(Scanner *scanner, TSLexer *lexer) {
   ret("scan_delimiter", true);
 }
 
-bool scan_body(Scanner *scanner, TSLexer *lexer) {
+static bool scan_body(Scanner *scanner, TSLexer *lexer) {
   print("scan_body() <-\n");
 
   bool did_advance = false;
@@ -328,7 +328,7 @@ bool scan_body(Scanner *scanner, TSLexer *lexer) {
   }
 }
 
-bool scan_start(Scanner *scanner, TSLexer *lexer) {
+static bool scan_start(Scanner *scanner, TSLexer *lexer) {
   print("scan_start() <-\n");
 
   while (iswspace(peek())) skip();
@@ -386,7 +386,7 @@ bool scan_start(Scanner *scanner, TSLexer *lexer) {
  * Note: if we return false for a scan, variable value changes are overwritten with the values of
  * the last successful scan. https://tree-sitter.github.io/tree-sitter/creating-parsers#serialize
  */
-bool scan(Scanner *scanner, TSLexer *lexer, const bool *expected) {
+static bool scan(Scanner *scanner, TSLexer *lexer, const bool *expected) {
   print("\n> ");
   if (expected[HEREDOC_START]) {
     print("%s ", TokenTypes[HEREDOC_START]);
@@ -441,6 +441,7 @@ void tree_sitter_hack_external_scanner_deserialize(
   Scanner *scanner = (Scanner *)payload;
   deserialize(scanner, state, length);
 }
+
 void tree_sitter_hack_external_scanner_destroy(void *payload) {
   Scanner *scanner = (Scanner *)payload;
   string_free(&scanner->delimiter);
