@@ -566,6 +566,7 @@ const rules = {
   collection: $ =>
     seq(
       $.qualified_identifier,
+      opt($.type_arguments),
       '{',
       opt(com(choice($._expression, $.element_initializer), ',')),
       '}',
@@ -1280,7 +1281,8 @@ module.exports = grammar({
     [$.binary_expression, $.prefix_unary_expression, $.call_expression],
     [$._expression, $.parameter],
     [$._expression, $.type_specifier],
-    [$._expression, $.type_specifier, $.function_pointer],
+    [$._expression, $.collection, $.type_specifier, $.function_pointer],
+    [$._expression, $.collection, $.function_pointer],
     [$._expression, $.field_initializer],
     [$._expression, $.function_pointer],
     [$.scoped_identifier, $._type_constant],

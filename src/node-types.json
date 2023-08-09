@@ -1136,6 +1136,10 @@
         {
           "type": "element_initializer",
           "named": true
+        },
+        {
+          "type": "type_arguments",
+          "named": true
         }
       ]
     }

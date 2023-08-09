@@ -3123,6 +3123,18 @@
           "name": "qualified_identifier"
         },
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "type_arguments"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
           "type": "STRING",
           "value": "{"
         },
@@ -8720,7 +8732,13 @@
     ],
     [
       "_expression",
+      "collection",
       "type_specifier",
+      "function_pointer"
+    ],
+    [
+      "_expression",
+      "collection",
       "function_pointer"
     ],
     [
