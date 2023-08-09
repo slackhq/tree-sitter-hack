@@ -180,6 +180,7 @@ const rules = {
       $.collection,
       $._literal,
       $._variablish,
+      $.expression_tree,
       $.prefixed_string,
       $.parenthesized_expression,
       $.binary_expression,
@@ -406,6 +407,11 @@ const rules = {
         /"(\\"|\\\\|\\?[^"\\])*"/,
       ),
     ),
+
+  expression_tree: $ => seq(
+    field('visitor', $.identifier),
+    token(/`[^`]*`/),
+  ),
 
   prefixed_string: $ => seq(field('prefix', $.identifier), $.string),
 

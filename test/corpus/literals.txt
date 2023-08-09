@@ -511,7 +511,7 @@ EOT;
 ---
 
 (script
-  (comment) 
+  (comment)
   (expression_statement
     (heredoc
       (variable))))
@@ -706,6 +706,34 @@ EOF;
 (script
   (expression_statement
     (heredoc)))
+
+==========================
+Expression tree strings
+==========================
+
+VisitorClass`42`;
+VisitorClass`{ return 1; }`;
+VisitorClass`{ $x = 1; return $x; }`;
+VisitorClass`{
+  $x = 1;
+  return $x;
+}`;
+
+---
+
+(script
+  (expression_statement
+    (expression_tree
+      (identifier)))
+  (expression_statement
+    (expression_tree
+      (identifier)))
+  (expression_statement
+    (expression_tree
+      (identifier)))
+  (expression_statement
+    (expression_tree
+      (identifier))))
 
 ==========================
 Single quoted strings
