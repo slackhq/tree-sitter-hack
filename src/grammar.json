@@ -635,6 +635,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "expression_tree"
+        },
+        {
+          "type": "SYMBOL",
           "name": "prefixed_string"
         },
         {
@@ -1963,6 +1967,26 @@
           }
         ]
       }
+    },
+    "expression_tree": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "visitor",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "`[^`]*`"
+          }
+        }
+      ]
     },
     "prefixed_string": {
       "type": "SEQ",

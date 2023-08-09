@@ -90,6 +90,10 @@
         "named": true
       },
       {
+        "type": "expression_tree",
+        "named": true
+      },
+      {
         "type": "function_pointer",
         "named": true
       },
@@ -1573,6 +1577,22 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "expression_tree",
+    "named": true,
+    "fields": {
+      "visitor": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -4544,11 +4564,11 @@
   },
   {
     "type": "float",
-    "named": true
+    "named": false
   },
   {
     "type": "float",
-    "named": false
+    "named": true
   },
   {
     "type": "for",
