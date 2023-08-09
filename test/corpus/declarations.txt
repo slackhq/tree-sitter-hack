@@ -37,6 +37,26 @@ async ($x) ==> $x + 1;
         right: (integer)))))
 
 ==========================
+Module attribute
+==========================
+
+<<file: SomeClass(SomeOtherClass::class)>>
+
+---
+
+(script
+      (module_attribute
+        (identifier)
+        (qualified_identifier
+          (identifier))
+        (arguments
+          (argument
+            (scoped_identifier
+              (qualified_identifier
+                (identifier))
+              (identifier))))))
+
+==========================
 Attribute
 ==========================
 
