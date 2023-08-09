@@ -278,6 +278,10 @@
         "named": true
       },
       {
+        "type": "module_attribute",
+        "named": true
+      },
+      {
         "type": "return_statement",
         "named": true
       },
@@ -2320,6 +2324,29 @@
         },
         {
           "type": "where_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "module_attribute",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arguments",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "qualified_identifier",
           "named": true
         }
       ]

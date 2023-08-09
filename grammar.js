@@ -108,6 +108,8 @@ const rules = {
     choice(
       $._declaration,
 
+      $.module_attribute,
+
       $.compound_statement,
       $.empty_statement,
       $.expression_statement,
@@ -144,6 +146,14 @@ const rules = {
       $.namespace_declaration,
       $.const_declaration,
     ),
+
+  module_attribute: $ => seq(
+    '<<',
+    $.identifier,
+    ':',
+    com($.qualified_identifier, opt($.arguments), ','),
+    '>>'
+  ),
 
   heredoc: $ =>
     seq(
