@@ -3039,3 +3039,28 @@ function func(): void {
           (element_initializer
             (integer)
             (string)))))))
+
+==========================
+Expression tree
+==========================
+
+function func(): int {
+  $result = calc`{ return 1; }`;
+  return $result;
+}
+
+---
+
+(script
+  (function_declaration
+    (identifier)
+    (parameters)
+    (type_specifier)
+    (compound_statement
+      (expression_statement
+        (binary_expression
+          (variable)
+          (expression_tree
+            (identifier))))
+      (return_statement
+        (variable)))))
