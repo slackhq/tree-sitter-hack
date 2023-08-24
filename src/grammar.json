@@ -86,6 +86,22 @@
           "value": "namespace"
         },
         {
+          "type": "STRING",
+          "value": "include"
+        },
+        {
+          "type": "STRING",
+          "value": "include_once"
+        },
+        {
+          "type": "STRING",
+          "value": "require"
+        },
+        {
+          "type": "STRING",
+          "value": "require_once"
+        },
+        {
           "type": "SYMBOL",
           "name": "_primitive_type"
         },
