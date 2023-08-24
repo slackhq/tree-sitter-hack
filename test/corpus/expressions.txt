@@ -1760,6 +1760,63 @@ C::class |> $$::CONST;
         (identifier)))))
 
 ==========================
+Pipe include
+==========================
+
+new Foo() |> $$->include();
+new Foo() |> $$->include_once();
+new Foo() |> $$->require();
+new Foo() |> $$->require_once();
+
+---
+
+(script
+  (expression_statement
+    (binary_expression
+      (new_expression
+        (qualified_identifier
+          (identifier))
+        (arguments))
+      (call_expression
+        (selection_expression
+          (pipe_variable)
+          (identifier))
+        (arguments))))
+  (expression_statement
+    (binary_expression
+      (new_expression
+        (qualified_identifier
+          (identifier))
+        (arguments))
+      (call_expression
+        (selection_expression
+          (pipe_variable)
+          (identifier))
+        (arguments))))
+  (expression_statement
+    (binary_expression
+      (new_expression
+        (qualified_identifier
+          (identifier))
+        (arguments))
+      (call_expression
+        (selection_expression
+          (pipe_variable)
+          (identifier))
+        (arguments))))
+  (expression_statement
+    (binary_expression
+      (new_expression
+        (qualified_identifier
+          (identifier))
+        (arguments))
+      (call_expression
+        (selection_expression
+          (pipe_variable)
+          (identifier))
+        (arguments)))))
+
+==========================
 Prefix unary
 ==========================
 
@@ -2958,8 +3015,8 @@ Xhp string not comment
 
 <body> # </body>;
 
-<body> 
-# 
+<body>
+#
 </body>;
 
 <body> // </body>;
