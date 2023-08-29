@@ -86,6 +86,22 @@
           "value": "namespace"
         },
         {
+          "type": "STRING",
+          "value": "include"
+        },
+        {
+          "type": "STRING",
+          "value": "include_once"
+        },
+        {
+          "type": "STRING",
+          "value": "require"
+        },
+        {
+          "type": "STRING",
+          "value": "require_once"
+        },
+        {
           "type": "SYMBOL",
           "name": "_primitive_type"
         },
@@ -268,6 +284,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "module_attribute"
+        },
+        {
+          "type": "SYMBOL",
           "name": "compound_statement"
         },
         {
@@ -386,6 +406,88 @@
         {
           "type": "SYMBOL",
           "name": "const_declaration"
+        }
+      ]
+    },
+    "module_attribute": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "<<"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "qualified_identifier"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "arguments"
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "REPEAT",
+              "content": {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": ","
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "qualified_identifier"
+                  },
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SYMBOL",
+                        "name": "arguments"
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ","
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "STRING",
+          "value": ">>"
         }
       ]
     },
@@ -546,6 +648,10 @@
         {
           "type": "SYMBOL",
           "name": "_variablish"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "expression_tree"
         },
         {
           "type": "SYMBOL",
@@ -1878,6 +1984,26 @@
         ]
       }
     },
+    "expression_tree": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "visitor",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          }
+        },
+        {
+          "type": "TOKEN",
+          "content": {
+            "type": "PATTERN",
+            "value": "`[^`]*`"
+          }
+        }
+      ]
+    },
     "prefixed_string": {
       "type": "SEQ",
       "members": [
@@ -3035,6 +3161,18 @@
         {
           "type": "SYMBOL",
           "name": "qualified_identifier"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "type_arguments"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -8634,7 +8772,13 @@
     ],
     [
       "_expression",
+      "collection",
       "type_specifier",
+      "function_pointer"
+    ],
+    [
+      "_expression",
+      "collection",
       "function_pointer"
     ],
     [

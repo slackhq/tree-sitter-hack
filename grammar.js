@@ -61,6 +61,10 @@ const rules = {
       'new',
       'print',
       'namespace',
+      'include',
+      'include_once',
+      'require',
+      'require_once',
       $._primitive_type,
       $._collection_type,
     ),
@@ -108,6 +112,8 @@ const rules = {
     choice(
       $._declaration,
 
+      $.module_attribute,
+
       $.compound_statement,
       $.empty_statement,
       $.expression_statement,
@@ -145,6 +151,14 @@ const rules = {
       $.const_declaration,
     ),
 
+  module_attribute: $ => seq(
+    '<<',
+    $.identifier,
+    ':',
+    com($.qualified_identifier, opt($.arguments), ','),
+    '>>'
+  ),
+
   heredoc: $ =>
     seq(
       '<<<',
@@ -180,6 +194,7 @@ const rules = {
       $.collection,
       $._literal,
       $._variablish,
+      $.expression_tree,
       $.prefixed_string,
       $.parenthesized_expression,
       $.binary_expression,
@@ -407,6 +422,11 @@ const rules = {
       ),
     ),
 
+  expression_tree: $ => seq(
+    field('visitor', $.identifier),
+    token(/`[^`]*`/),
+  ),
+
   prefixed_string: $ => seq(field('prefix', $.identifier), $.string),
 
   // Types
@@ -556,6 +576,7 @@ const rules = {
   collection: $ =>
     seq(
       $.qualified_identifier,
+      opt($.type_arguments),
       '{',
       opt(com(choice($._expression, $.element_initializer), ',')),
       '}',
@@ -1270,7 +1291,8 @@ module.exports = grammar({
     [$.binary_expression, $.prefix_unary_expression, $.call_expression],
     [$._expression, $.parameter],
     [$._expression, $.type_specifier],
-    [$._expression, $.type_specifier, $.function_pointer],
+    [$._expression, $.collection, $.type_specifier, $.function_pointer],
+    [$._expression, $.collection, $.function_pointer],
     [$._expression, $.field_initializer],
     [$._expression, $.function_pointer],
     [$.scoped_identifier, $._type_constant],

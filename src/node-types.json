@@ -90,6 +90,10 @@
         "named": true
       },
       {
+        "type": "expression_tree",
+        "named": true
+      },
+      {
         "type": "function_pointer",
         "named": true
       },
@@ -275,6 +279,10 @@
       },
       {
         "type": "if_statement",
+        "named": true
+      },
+      {
+        "type": "module_attribute",
         "named": true
       },
       {
@@ -1132,6 +1140,10 @@
         {
           "type": "element_initializer",
           "named": true
+        },
+        {
+          "type": "type_arguments",
+          "named": true
         }
       ]
     }
@@ -1565,6 +1577,22 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "expression_tree",
+    "named": true,
+    "fields": {
+      "visitor": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -2320,6 +2348,29 @@
         },
         {
           "type": "where_clause",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "module_attribute",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "arguments",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "qualified_identifier",
           "named": true
         }
       ]
@@ -4513,11 +4564,11 @@
   },
   {
     "type": "float",
-    "named": true
+    "named": false
   },
   {
     "type": "float",
-    "named": false
+    "named": true
   },
   {
     "type": "for",
@@ -4697,11 +4748,11 @@
   },
   {
     "type": "string",
-    "named": false
+    "named": true
   },
   {
     "type": "string",
-    "named": true
+    "named": false
   },
   {
     "type": "super",

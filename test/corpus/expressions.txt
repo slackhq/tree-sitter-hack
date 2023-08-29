@@ -839,12 +839,17 @@ Collection
 
 Vector {};
 HH\Vector {1, 2, 3};
+Vector<string> {};
 
 \HH\Map {};
 Map {'foo' => 1};
 
 Set {};
 Set {'foo', 'bar'};
+Set<string> {'foo', 'bar'};
+Set<classname<SomeClass>> {
+  SomeClass::class
+};
 
 ---
 
@@ -864,6 +869,12 @@ Set {'foo', 'bar'};
   (expression_statement
     (collection
       (qualified_identifier
+        (identifier))
+            (type_arguments
+              (type_specifier))))
+        (expression_statement
+          (collection
+            (qualified_identifier
         (identifier)
         (identifier))))
   (expression_statement
@@ -882,7 +893,31 @@ Set {'foo', 'bar'};
       (qualified_identifier
         (identifier))
       (string)
-      (string))))
+      (string)))
+      (expression_statement
+        (collection
+          (qualified_identifier
+            (identifier))
+          (type_arguments
+            (type_specifier))
+          (string)
+          (string)))
+      (expression_statement
+        (collection
+          (qualified_identifier
+            (identifier))
+          (type_arguments
+            (type_specifier
+              (qualified_identifier
+                (identifier))
+              (type_arguments
+                (type_specifier
+                  (qualified_identifier
+                    (identifier))))))
+          (scoped_identifier
+            (qualified_identifier
+              (identifier))
+              (identifier)))))
 
 ==========================
 Comments
@@ -1758,6 +1793,63 @@ C::class |> $$::CONST;
       right: (scoped_identifier
         (pipe_variable)
         (identifier)))))
+
+==========================
+Pipe include
+==========================
+
+new Foo() |> $$->include();
+new Foo() |> $$->include_once();
+new Foo() |> $$->require();
+new Foo() |> $$->require_once();
+
+---
+
+(script
+  (expression_statement
+    (binary_expression
+      (new_expression
+        (qualified_identifier
+          (identifier))
+        (arguments))
+      (call_expression
+        (selection_expression
+          (pipe_variable)
+          (identifier))
+        (arguments))))
+  (expression_statement
+    (binary_expression
+      (new_expression
+        (qualified_identifier
+          (identifier))
+        (arguments))
+      (call_expression
+        (selection_expression
+          (pipe_variable)
+          (identifier))
+        (arguments))))
+  (expression_statement
+    (binary_expression
+      (new_expression
+        (qualified_identifier
+          (identifier))
+        (arguments))
+      (call_expression
+        (selection_expression
+          (pipe_variable)
+          (identifier))
+        (arguments))))
+  (expression_statement
+    (binary_expression
+      (new_expression
+        (qualified_identifier
+          (identifier))
+        (arguments))
+      (call_expression
+        (selection_expression
+          (pipe_variable)
+          (identifier))
+        (arguments)))))
 
 ==========================
 Prefix unary
@@ -2958,8 +3050,8 @@ Xhp string not comment
 
 <body> # </body>;
 
-<body> 
-# 
+<body>
+#
 </body>;
 
 <body> // </body>;
@@ -3039,3 +3131,28 @@ function func(): void {
           (element_initializer
             (integer)
             (string)))))))
+
+==========================
+Expression tree
+==========================
+
+function func(): int {
+  $result = calc`{ return 1; }`;
+  return $result;
+}
+
+---
+
+(script
+  (function_declaration
+    (identifier)
+    (parameters)
+    (type_specifier)
+    (compound_statement
+      (expression_statement
+        (binary_expression
+          (variable)
+          (expression_tree
+            (identifier))))
+      (return_statement
+        (variable)))))
