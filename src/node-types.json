@@ -4623,6 +4623,10 @@
     "named": false
   },
   {
+    "type": "internal",
+    "named": false
+  },
+  {
     "type": "is",
     "named": false
   },
@@ -4748,11 +4752,11 @@
   },
   {
     "type": "string",
-    "named": true
+    "named": false
   },
   {
     "type": "string",
-    "named": false
+    "named": true
   },
   {
     "type": "super",
