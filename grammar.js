@@ -1091,7 +1091,7 @@ const rules = {
 
   static_modifier: $ => 'static',
 
-  visibility_modifier: $ => choice('public', 'protected', 'private'),
+  visibility_modifier: $ => choice('public', 'protected', 'private', 'internal'),
 
   attribute_modifier: $ =>
     seq('<<', com($.qualified_identifier, opt($.arguments), ','), '>>'),

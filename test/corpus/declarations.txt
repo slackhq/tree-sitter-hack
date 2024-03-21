@@ -3943,6 +3943,7 @@ abstract class C {
   function method3(): void {}
   abstract public static function method4();
   final public static function method5(): void {}
+  internal function method6(): void {}
 }
 
 ---
@@ -3979,6 +3980,12 @@ abstract class C {
         (final_modifier)
         (visibility_modifier)
         (static_modifier)
+        name: (identifier)
+        (parameters)
+        return_type: (type_specifier)
+        body: (compound_statement))
+      (method_declaration
+        (visibility_modifier)
         name: (identifier)
         (parameters)
         return_type: (type_specifier)
