@@ -22,10 +22,10 @@
       "problemMatcher": []
     },
     {
-      "label": "hh-json",
+      "label": "hh-parse",
       "type": "shell",
-      "command": "F=${file}; bin/hh-json $F>\"${F%.*}.json\"; code -r \"${F%.*}.json\"",
-      "detail": "bin/hh-json ${file}",
+      "command": "F=${file}; bin/hh-parse $F>\"${F%.*}.json\"; code -r \"${F%.*}.json\"",
+      "detail": "bin/hh-parse ${file}",
       "problemMatcher": []
     },
     {
@@ -82,30 +82,6 @@
       "group": "test",
       "label": "npm: test",
       "detail": "bin/test-corpus && bin/test-examples",
-      "problemMatcher": {
-        "fileLocation": "relative",
-        "pattern": [
-          {
-            "regexp": "^([^\\s].*)$",
-            "file": 1
-          },
-          {
-            "regexp": "^\\((\\d+),(\\d+)\\)-\\((\\d+),(\\d+)\\) (.*)$",
-            "loop": true,
-            "line": 1,
-            "column": 2,
-            "endLine": 3,
-            "endColumn": 4,
-            "message": 5
-          }
-        ]
-      }
-    },
-    {
-      "type": "npm",
-      "script": "test-corpus",
-      "label": "npm: test-corpus",
-      "detail": "bin/test-corpus",
       "problemMatcher": {
         "fileLocation": "relative",
         "pattern": [
